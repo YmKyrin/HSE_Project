@@ -1,0 +1,59 @@
+/* .container {
+    width: 400px;
+    margin: 0 auto;
+    overflow: hidden;
+} */
+/* 
+.form-container {
+    display: flex;
+    width: 1100%;  11 pages à 100% de largeur chacune 
+} */
+
+/* .form {
+    width: 9.09%; /* 100% / 11 pages = 9.09% par page 
+    float: left;
+    padding: 20px;
+    box-sizing: border-box;
+} */
+
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Crée 3 colonnes égales */
+    grid-gap: 10px; /* Espace entre les éléments */
+    justify-content: space-around; /* Centre les éléments horizontalement */
+    align-items: center; /* Centre les éléments verticalement */
+    height: 20vh; /* 100% de la hauteur de la vue */
+}
+
+.grid-item {
+    background-color: #ffffff;
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #0435d7;
+    color: black;
+    border-radius: 5px;
+    box-shadow: 1px 2px 3px rgba(12,12,12,0.2);
+}
+
+.text_kpi{
+ text-align: center;
+}
+
+
+input[type="date"] {
+    font-size: 16px;
+    color: #333;
+    background-color: #f2f2f2;
+    border: 1px solid #999;
+    border-radius: 4px;
+    padding: 6px;
+}
+
+#end_date{
+    margin-right: 20px;
+}
+
+#start_date{
+    margin-right: 90px;
+}

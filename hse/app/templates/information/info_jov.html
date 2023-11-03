@@ -1,0 +1,63 @@
+{% extends "app/home_jov.html" %} 
+{% load static %}
+
+{% block content %}
+
+<div class="t">   
+            <div class="">
+                <h1>Jovena</h1>
+                <small>Informations / jovena</small>
+            </div>
+            <br>
+            <div class="position_info">
+                <div class="box_info">
+                    <h1>Information Personnelle</h1>
+                    <br>
+                    <div class="">
+                        <label for="">Id :</label>
+                        <span>{{ profil_utilisateur.id_poste }}</span>
+                    </div>
+                    <br>
+                    <div class="">
+                        <label for="">Poste :</label>
+                        <span>{{ profil_utilisateur.poste }}</span>
+                    </div>
+                    <br>
+                    <div class="">
+                        <label for="">Nom :</label>
+                        <span>{{ user.last_name }}</span>
+                    </div>
+                    <br>    
+                    <div class="">
+                        <label for="">Prenom :</label>
+                        <span>{{ user.first_name }}</span>
+                    </div>
+                    <br>
+                    <div class="">
+                        <label for="">Nom d'utilisateur :</label>
+                        <span>{{ user.username }}</span>
+                    </div>
+                    <br>    
+                    <div class="">
+                        <label for="">E-Mail :</label>
+                        <span>{{ user.email }}</span>
+                    </div>
+                    <br>    
+                    <div class="">
+                        <label for="">Date d'entrer :</label>
+                        <span> {{ user.date_joined }}</span>
+                    </div>
+                    <br>    
+                    <div class="">
+                        <label for="">Dernier Connexion :</label>
+                        <span>{{ user.last_login }}</span>
+                    </div>
+                </div>
+                <div class="image_info">
+                      <img src="{%static 'images/info.png' %}" width="550" height="450" alt=""> 
+                   
+                </div>
+            </div>
+</div>
+
+{% endblock %}

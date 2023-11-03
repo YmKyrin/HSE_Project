@@ -1,0 +1,494 @@
+{% extends "app/home_jov.html" %} 
+{% load static %}
+
+{% block content %}
+<div class="container">           
+            <br><br>
+            <div class="text_kpi">
+                <h1>Pas de compromis en matière de sécurité</h1>
+            </div>
+
+        <a href="{% url 'KPI_jov_ajout' %}"><button class="btn btn-primary">AJOUTER</button></a>
+        
+        
+        <div class="grid-container">
+            <div class="grid-item"><strong> Taux de fréquence incident</strong> <br> {{ttl}} </div>
+            <div class="grid-item"><strong> Somme Totale: </strong><br>{{ttl1}}</div>
+            <div class="grid-item"><strong> Nombre d'accident: </strong>{{somme_accident}} <br><strong>Heure Perdues: </strong>{{somme_heure_perdue}} </div>
+        </div>
+         
+        <form action="" method="POST" id="search-form">
+            {% csrf_token %}
+            <label for="start_date">Date de début :</label>
+            <input type="date" name="start_date" id="start_date" required>  
+            <label for="end_date">Date de fin :</label>
+            <input type="date" name="end_date" id="end_date" required>
+            
+            <button type="submit" class="btn btn-secondary">Search</button>
+            <a href="{% url 'KPI_jov' %}"><button type="button" id="refresh-button" class="btn btn-success">Rafraîchir</button></a>       
+        </form>
+             <br>
+            <table class="table table-hover">
+                <thead>
+                    
+                    <tr>
+                        <th>specifications</th>
+                        {% for event in events %}
+                            <th>{{ event.date }}</th>
+                        {% endfor %}
+                        <th>total</th>
+                    </tr>
+                    
+                </thead>
+                <tbody>
+                    
+                        <tr>
+                            <td>homme</td>
+                            {% for event in events %}
+                                <td>{{event.homme}}</td>
+                            {% endfor %}
+                            
+                            <td>{{somme_homme}}</td>
+                        </tr>
+                        <tr>
+                            <td>femme</td>
+                            {% for event in events %}
+                                <td>{{event.femme}}</td>
+                            {% endfor %}
+
+                            <td>{{somme_femme}}</td>
+                        </tr>
+                        <tr>
+                            <td>effectif total sur site</td>
+                            {% for event in events %}
+                                <td>{{event.effectif_total_sur_site}}</td>
+                            {% endfor %}
+                            <td>{{somme_effectif_total_sur_site}}</td>
+                        </tr>
+                        <tr>
+                            <td>heure travailler</td>
+                            {% for event in events %}
+                                <td>{{event.heure_travailler}}</td>
+                            {% endfor %}
+                            <td>{{somme_heure_travailler}}</td>
+                        </tr>
+                        <tr>
+                            <td>fatalite</td>
+                            {% for event in events %}
+                                <td>{{event.fatalite}}</td>
+                            {% endfor %}
+                            <td>{{somme_fatalite}}</td>
+                        </tr>
+                        <tr>
+                            <td>accident</td>
+                            {% for event in events %}
+                                <td>{{event.accident}}</td>
+                            {% endfor %}
+                            <td>{{somme_accident}}</td>
+                        </tr>
+                        <tr>
+                            <td>Poste adapte</td>
+                            {% for event in events %}
+                                <td>{{event.poste_adapte}}</td>
+                            {% endfor %}
+                            <td>{{somme_poste_adapte}}</td>
+                        </tr>
+                        <tr>
+                            <td>Soins Medicaux</td>
+                            {% for event in events %}
+                                <td>{{event.soins_medicaux}}</td>
+                            {% endfor %}
+                            <td>{{somme_soins_medicaux}}</td>
+                        </tr>
+                   
+                        <tr>
+                            <td>Premier Secours</td>
+                            {% for event in events %}   
+                                <td>{{event.premier_secours}}</td>
+                            {% endfor %}
+                            <td>{{somme_premier_secours}}</td>
+                        </tr>
+                   
+                        <tr>
+                            <td>Presque accident</td>
+                            {% for event in events %}  
+                                <td>{{event.presque_accident}}</td>
+                            {% endfor %}
+                            <td>{{somme_presque_accident}}</td>
+                        </tr>
+                        <tr>
+                            <td>dommage materiel</td>
+                            {% for event in events %} 
+                                <td>{{event.dommage_materiel}}</td>
+                            {% endfor %}
+                            <td>{{somme_dommage_materiel}}</td>
+                        </tr>
+                        <tr>
+                            <td>Heure perdue</td>
+                            {% for event in events %} 
+                                <td>{{event.heure_perdue}}</td>
+                            {% endfor %}
+                            <td>{{somme_heure_perdue}}</td>
+                        </tr>
+                        <tr>
+                            <td>Km parcouru</td>
+                            {% for event in events %}
+                                <td>{{event.km_parcouru}}</td>
+                            {% endfor %}
+                            <td>{{somme_km_parcouru}}</td>
+                        </tr>
+                        <tr>
+                            <td>nombre incident</td>
+                            {% for event in events %} 
+                                <td>{{event.nombre_incident}}</td>
+                            {% endfor %}
+                            <td>{{somme_nombre_incident}}</td>
+                        </tr>
+                        <tr>
+                            <td>nombre acceleration brusque</td>
+                            {% for event in events %}  
+                                <td>{{event.nombre_acceleration_brusque}}</td>
+                            {% endfor %}
+                            <td>{{somme_nombre_acceleration_brusque}}</td>
+                        </tr>
+                        <tr>
+                            <td>nombre freinage brusque</td>
+                            {% for event in events %}
+                                <td>{{event.nombre_freinage_brusque}}</td>
+                            {% endfor %}
+                            <td>{{somme_nombre_freinage_brusque}}</td>
+                        </tr>
+                        <tr>
+                            <td>nombre depassement</td>
+                            {% for event in events %}    
+                                <td>{{event.nombre_depassement}}</td>
+                            {% endfor %}
+                            <td>{{somme_nombre_depassement}}</td>
+                        </tr>
+                        
+                        
+                        
+                        
+                        <tr>
+                            <td>nombre de malade</td>
+                            {% for event in events %}    
+                                <td>{{event.nombre_de_malades}}</td>
+                            {% endfor %}
+                            <td>{{somme_nombre_de_malades}}</td>
+                        </tr>
+                        <tr>
+                            <td>violation des regles</td>
+                            {% for event in events %}    
+                                <td>{{event.violation_des_regles}}</td>
+                            {% endfor %}
+                            <td>{{somme_violation_des_regles}}</td>
+                        </tr>
+                        <tr>
+                            <td>nombre de deversement</td>
+                            {% for event in events %}    
+                                <td>{{event.nombre_de_deversement}}</td>
+                            {% endfor %}
+                            <td>{{somme_nombre_de_deversement}}</td>
+                        </tr>
+                        <tr>
+                            <td>volume de deversement</td>
+                            {% for event in events %}    
+                                <td>{{event.volume_de_deversement}}</td>
+                            {% endfor %}
+                            <td>{{somme_volume_de_deversement}}</td>
+                        </tr>
+    
+                        <tr>
+                            <td>surface impactee</td>
+                            {% for event in events %}    
+                                <td>{{event.surface_impactee}}</td>
+                            {% endfor %}
+                            <td>{{somme_surface_impactee}}</td>
+                        </tr>
+                        <tr>
+                            <td>nombre inspection</td>
+                            {% for event in events %}    
+                                <td>{{event.nombre_inspection}}</td>
+                            {% endfor %}
+                            <td>{{somme_nombre_inspection}}</td>
+                        </tr>
+                        <tr>
+                            <td>zones de dechats</td>
+                            {% for event in events %}    
+                                <td>{{event.zones_de_dechets}}</td>
+                            {% endfor %}
+                            <td>{{somme_zones_de_dechets}}</td>
+                        </tr>
+                        <tr>
+                            <td>zones de stockage</td>
+                            {% for event in events %}    
+                                <td>{{event.zones_de_stockage}}</td>
+                            {% endfor %}
+                            <td>{{somme_zones_de_stockage}}</td>
+                        </tr>
+                        <tr>
+                            <td>dechets inerte</td>
+                            {% for event in events %}    
+                                <td>{{event.dechets_inerte}}</td>
+                            {% endfor %}
+                            <td>{{somme_dechets_inerte}}</td>
+                        </tr>
+                
+                        <tr>
+                            <td>dechets organique</td>
+                            {% for event in events %}    
+                                <td>{{event.dechets_organique}}</td>
+                            {% endfor %}
+                            <td>{{somme_dechets_organique}}</td>
+                        </tr>
+                        <tr>
+                            <td>dechets plastique</td>
+                            {% for event in events %}    
+                                <td>{{event.dechets_plastique}}</td>
+                            {% endfor %}
+                            <td>{{somme_dechets_plastique}}</td>
+                        </tr>
+                        <tr>
+                            <td>dechets hydrocarbure</td>
+                            {% for event in events %}    
+                                <td>{{event.dechets_hydrocarbure}}</td>
+                            {% endfor %}
+                            <td>{{somme_dechets_hydrocarbure}}</td>
+                        </tr>
+                        <tr>
+                            <td>dechets d3e</td>
+                            {% for event in events %}    
+                                <td>{{event.dechets_d3e}}</td>
+                            {% endfor %}
+                            <td>{{somme_dechets_d3e}}</td>
+                        </tr>
+                        <tr>
+                            <td>eaux usees</td>
+                            {% for event in events %}    
+                                <td>{{event.eaux_usees}}</td>
+                            {% endfor %}
+                            <td>{{somme_eaux_usees}}</td>
+                        </tr>
+                        <tr>
+                            <td>consommation eau extraite</td>
+                            {% for event in events %}    
+                                <td>{{event.consommation_eau_extraite}}</td>
+                            {% endfor %}
+                            <td>{{somme_consommation_eau_extraite}}</td>
+                        </tr>
+                        <tr>
+                            <td>consommation de carburant</td>
+                            {% for event in events %}    
+                                <td>{{event.consommation_de_carburant}}</td>
+                            {% endfor %}
+                            <td>{{somme_consommation_de_carburant}}</td>
+                        </tr>
+                        <tr>
+                            <td>consommation electricite</td>
+                            {% for event in events %}    
+                                <td>{{event.consommation_electricite}}</td>
+                            {% endfor %}
+                            <td>{{somme_consommation_electricite}}</td>
+                        </tr>
+                        <tr>
+                            <td>valeur limite seuil</td>
+                            {% for event in events %}    
+                                <td>{{event.valeur_limite_seuil}}</td>
+                            {% endfor %}
+                            <td>{{somme_valeur_limite_seuil}}</td>
+                        </tr>
+                        <tr>
+                            <td>x sur site</td>
+                            {% for event in events %}    
+                                <td>{{event.x_sur_site}}</td>
+                            {% endfor %}
+                            <td>{{somme_x_sur_site}}</td>
+                        </tr>
+                        <tr>
+                            <td>x aux recepteurs</td>
+                            {% for event in events %}    
+                                <td>{{event.x_aux_racepteurs}}</td>
+                            {% endfor %}
+                            <td>{{somme_x_aux_racepteurs}}</td>
+                        </tr>
+                        <tr>
+                            <td>x source emission</td>
+                            {% for event in events %}    
+                                <td>{{event.x_source_emission}}</td>
+                            {% endfor %}
+                            <td>{{somme_x_source_emission}}</td>
+                        </tr>
+                        <tr>
+                            <td>x qualite de l air</td>
+                            {% for event in events %}    
+                                <td>{{event.x_qualite_de_air}}</td>
+                            {% endfor %}
+                            <td>{{somme_x_qualite_de_air}}</td>
+                        </tr>
+                        <tr>
+                            <td>x sante</td>
+                            {% for event in events %}    
+                                <td>{{event.x_sante}}</td>
+                            {% endfor %}
+                            <td>{{somme_x_sante}}</td>
+                        </tr>
+                        <tr>
+                            <td>x securite</td>
+                            {% for event in events %}    
+                                <td>{{event.x_securite}}</td>
+                            {% endfor %}
+                            <td>{{somme_x_securite}}</td>
+                        </tr>
+                        <tr>
+                            <td>x environnement</td>
+                            {% for event in events %}    
+                                <td>{{event.x_environnement}}</td>
+                            {% endfor %}
+                            <td>{{somme_x_environnement}}</td>
+                        </tr>
+                        <tr>
+                            <td>x social</td>
+                            {% for event in events %}    
+                                <td>{{event.x_social}}</td>
+                            {% endfor %}
+                            <td>{{somme_x_social}}</td>
+                        </tr>
+                        <tr>
+                            <td>aucun incident social</td>
+                            {% for event in events %}    
+                                <td>{{event.aucun_incident_social}}</td>
+                            {% endfor %}
+                            <td>{{somme_aucun_incident_social}}</td>
+                        </tr>
+                        <tr>
+                            <td>nombre de travailleur migrant</td>
+                            {% for event in events %}    
+                                <td>{{event.nombre_de_travailleurs_migrants}}</td>
+                            {% endfor %}
+                            <td>{{somme_nombre_de_travailleurs_migrants}}</td>
+                        </tr>
+                        <tr>
+                            <td>nombre de travailleurs locaux</td>
+                            {% for event in events %}    
+                                <td>{{event.nombre_de_travailleurs_locaux}}</td>
+                            {% endfor %}
+                            <td>{{somme_nombre_de_travailleurs_locaux}}</td>
+                        </tr>
+                        <tr>
+                            <td>pourcentage de mains de oeuvre</td>
+                            {% for event in events %}    
+                                <td>{{event.pourcentage_main_oeuvre}}</td>
+                            {% endfor %}
+                            <td>{{somme_pourcentage_main_oeuvre}}</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>duree moyenne travail</td>
+                            {% for event in events %}    
+                                <td>{{event.duree_moyenne_travail}}</td>
+                            {% endfor %}
+                            <td>{{somme_duree_moyenne_travail}}</td>
+                        </tr>
+                        <tr>
+                            <td>logement des travailleurs</td>
+                            {% for event in events %}    
+                                <td>{{event.logement_des_travailleurs}}</td>
+                            {% endfor %}
+                            <td>{{somme_logement_des_travailleurs}}</td>
+                        </tr>
+                        <tr>
+                            <td>approvisionnement eau potable</td>
+                            {% for event in events %}    
+                                <td>{{event.approvionnement_eau_potable}}</td>
+                            {% endfor %}
+                            <td>{{somme_approvionnement_eau_potable}}</td>
+                        </tr>
+                        <tr>
+                            <td>nombre activite engagement</td>
+                            {% for event in events %}    
+                                <td>{{event.nombre_acticivite_engagement}}</td>
+                            {% endfor %}
+                            <td>{{somme_nombre_acticivite_engagement}}</td>
+                        </tr>
+                       
+                        <tr>
+                            <td>nombre activites</td>
+                            {% for event in events %}    
+                                <td>{{event.nombre_activites}}</td>
+                            {% endfor %}
+                            <td>{{somme_nombre_activites}}</td>
+                        </tr>
+                        <tr>
+                            <td>induction sur site</td>
+                            {% for event in events %}    
+                                <td>{{event.induction_sur_site}}</td>
+                            {% endfor %}
+                            <td>{{somme_induction_sur_site}}</td>
+                        </tr>
+                        <tr>
+                            <td>exercice d urgence</td>
+                            {% for event in events %}    
+                                <td>{{event.exercice_urgence}}</td>
+                            {% endfor %}
+                            <td>{{somme_exercice_urgence}}</td>
+                        </tr>
+                        <tr>
+                            <td>toolbox</td>
+                            {% for event in events %}    
+                                <td>{{event.toolbox}}</td>
+                            {% endfor %}
+                            <td>{{somme_toolbox}}</td>
+                        </tr>
+                        <tr>
+                            <td>formation specifique</td>
+                            {% for event in events %}    
+                                <td>{{event.formation_specifique}}</td>
+                            {% endfor %}
+                            <td>{{somme_formation_specifique}}</td>
+                        </tr>
+                        <tr>
+                            <td>starter</td>
+                            {% for event in events %}    
+                                <td>{{event.starter}}</td>
+                            {% endfor %}
+                            <td>{{somme_starter}}</td>
+                        </tr>
+                        <tr>
+                            <td>nombre outil hsses</td>
+                            {% for event in events %}    
+                                <td>{{event.nombre_outil_hsses}}</td>
+                            {% endfor %}
+                            <td>{{somme_nombre_outil_hsses}}</td>
+                        </tr>
+                        <tr>
+                            <td>nombre d inspection hsses</td>
+                            {% for event in events %}    
+                                <td>{{event.nombre_inspection_hsses}}</td>
+                            {% endfor %}
+                            <td>{{somme_nombre_inspection_hsses}}</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>taux frequence incident</td>
+                            {% for event in events %}
+                                
+                                <td>{{event.taux_frequence_incident}}</td>
+                            {% endfor %}
+                            <td>{{ttl}}</td>
+                            
+                        </tr>
+                        <tr>
+                            <td>taux gravite incident</td>
+                            {% for event in events %}
+                                <td>{{event.taux_gravite_incident}}</td>
+                            {% endfor %}
+                            <td>0</td>
+                            
+                        </tr>
+                              
+                </tbody>
+            </table>
+</div>
+</div> 
+<br>
+{% endblock  %}

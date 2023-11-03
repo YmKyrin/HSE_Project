@@ -1,0 +1,535 @@
+{% extends "app/home_prest.html" %} 
+{% load static %}
+
+{% block content %}
+<div class="container">
+        <div>
+            <h1 class="text-center">SGHSSES-TMP-JOV-903.1</h1>
+            <h4 class="text-center">PERMIS DE FEU</h4> <br><br>
+            <div class="text-center">
+                <a href="{% url 'checklist_prest' %}"><button class="btn btn-info">Permis Feu</button></a>
+                <a href="{% url 'checklist_permis_excavation_prest' %}"><button class="btn btn-info">Permis Excavation</button></a>
+                <a href="{% url 'checklist_espace_confine_prest' %}"><button class="btn btn-info">Espace Confine</button></a>
+                <a href="{% url 'message_prest' %}"><button class="btn btn-outline-primary">Message</button></a>
+            </div>
+        </div>
+        <br>
+        <form action="" method="POST">
+            <div class="">
+                {% csrf_token %}
+                <div class="card">
+                {% for message in messages %}
+                    <h4 id="messages">{{ message }}</h4>
+                {% endfor %}
+                <div class="card-body">
+                    <h4>Informations générales</h4>
+                        <div class="col-md-4 form-group">
+                            <label>Date:</label>
+                            <input type="date" class="form-control" name="date_entete">
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label>Registre:</label>
+                            <input type="number" class="form-control" name="registre_entete">
+                        </div>
+                        <br>
+                        <h4>Site et Client</h4>
+                        <div class="custom-container">
+                            <div class="left-column">
+                                <div class="form-row">
+                                    <div class="col-md-6 form-group">
+                                        <label>Site:</label>
+                                        <input type="text" class="form-control" name="site">
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <label for="client">Client:</label>
+                                        <input type="text" class="form-control" name="client">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="right-column">
+                                <div class="form-row">
+                                    <div class="col-md-6 form-group">
+                                        <label>Localité:</label>
+                                        <input type="text" class="form-control" name="localite">
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <label>Entreprise intervenante:</label>
+                                        <input type="text" class="form-control" name="entreprise_intervenante">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <h4>Descriptif du travail</h4>
+                        <div class="form-group">
+                            <label>Description:</label>
+                            <textarea type="text" class="form-control" rows="4" name="descriptif_travail"></textarea>
+                        </div>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="card">
+                <div class="card-body">
+                    <h4>Date et Heure</h4>
+                    <div class="custom-container">
+                        <div class="left-column">
+                            <div class="col-md-6 form-group">
+                                <label>Date de début: </label>
+                                <input type="date" class="form-control" name="date_debut"> &nbsp;
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label>Heure de début: </label>
+                                <input type="time" class="form-control" name="heure_debut"> &nbsp;
+                            </div>
+                        </div>
+                        <div class="right-column">
+                            <div class="col-md-6 form-group">
+                                <label>Date de fin: </label>
+                                <input type="date" class="form-control" name="date_fin"><br><br>
+                            </div>  
+                            <div class="col-md-6 form-group">
+                                <label>Heure de fin</label>
+                                <input type="time" class="form-control" name="heure_fin"> &nbsp;
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="card">
+                <div class="card-body">
+                    <div class="">
+                        <div class="col-md-6 form-group">
+                            <h4>Risque particulier</h4>
+                            <input type="checkbox" class="form-check-input" name="proximite_zone_ATEX">
+                            <label class="custom-control-label">Proximité de zone ATEX</label><br><br>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label for="">Autre(s) à préciser</label>
+                            <input type="text" class="form-control" name="autre_risque"><br><br>
+                        </div>
+
+                        <h4>Nom des Intervenants autorisés</h4><br>
+                        <div class="custom-container">
+                            <div class="left-column">
+                                <div class="row">
+                                    <div class="col-md-1">
+                                        <label>1- </label>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control" name="intervenant1"><br><br>
+                                    </div>
+                                    </div>
+                                <div class="row">
+                                    <div class="col-md-1">
+                                        <label for="">2- </label>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control" name="intervenant2"><br><br>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="right-column">
+                                <div class="row">
+                                    <div class="col-md-1">
+                                        <label>3- </label>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control" name="intervenant3"><br><br>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-1">
+                                        <label>4- </label>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control" name="intervenant4">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <h4>Type de travaux par points chauds</h4><br>
+                                    <div class="checkbox-group">
+                                    <input type="checkbox" class="form-check-input" name="soudage">
+                                    <label class="form-check-label" for="">Soudage</label><br><br>
+                                    <input type="checkbox" class="form-check-input" name="tonconnage" id="">
+                                    <label class="form-check-label" for="">Tronçonnage</label><br><br>
+                                    <input type="checkbox" class="form-check-input" name="decoupage" id="">
+                                    <label class="form-check-label" for="">Découpage</label><br><br>
+                                    <input type="checkbox" class="form-check-input" name="meulage" id="">
+                                    <label class="form-check-label" for="">Meulage</label><br><br>
+                                </div>
+                                    <label for="">Autre(s) à préciser</label><br>
+                                    <input type="text" class="form-control" name="autre_type_travaux"><br><br>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <h4>Matériels utiisés</h4><br>
+                                    <div class="checkbox-group">
+                                    <input type="checkbox" class="form-check-input" name="poste_souder" id="">
+                                    <label class="form-check-label" for="">Poste à souder</label><br><br>
+                                    <input type="checkbox" class="form-check-input" name="chalumeau" id="">
+                                    <label class="form-check-label" for="">chalumeau</label><br><br>
+                                    <input type="checkbox" class="form-check-input" name="meuleuse" id="">
+                                    <label class="form-check-label" for="">Meuleuse</label><br><br>
+                                    <input type="checkbox" class="form-check-input" name="tronconneuse" id="">
+                                    <label class="form-check-label" for="">Tronçonneuse</label><br><br>
+                                </div>
+                                    <label for="">Autre(s) à préciser</label><br>
+                                    <input type="text" class="form-control" name="autre_materiel_utilise"><br><br>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <h4>Documents associés</h4><br>
+                                    <div class="checkbox-group">
+                                    <input type="checkbox" class="form-check-input" name="plan_prevention" id="">
+                                    <label class="form-check-label" for="">Plan de prévention</label><br><br>
+                                    <input type="checkbox" class="form-check-input" name="ASET" id="">
+                                    <label class="form-check-label" for="">ASET</label><br><br>
+                                    <input type="checkbox" class="form-check-input" name="permis_entree_espace_confine" id="">
+                                    <label class="form-check-label" for="">Pemis d'entrée en espace confiné</label><br><br>
+                                </div>
+                                <label for="">Autre(s) à préciser</label><br>
+                                <input type="text" class="form-control" name="autre_document" id=""><br><br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+           <br><br>
+           
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="section">
+                            <div class="securite">
+                                <div class="col-md-6">
+                                    <h3 class="section-heading">MISE EN SECURITE</h3>
+                                        <div class="form-group">
+                                            <label for="">Evacuation des substances combustibles: </label>
+                                            <div class="radio-options">
+                                                <label for="" class="radio-label">
+                                                    <input type="radio" class="form-check-input" name="evacuation_substance" id="" value="Non"> Non
+                                                </label>
+                                                <label for="" class="radio-label">
+                                                    <input type="radio" class="form-check-input" name="evacuation_substance" id="" value="Oui"> Oui
+                                                </label>
+                                                <label for="" class="radio-label">
+                                                    <input type="radio" class="form-check-input" name="evacuation_substance" id="" value="Fait"> Fait
+                                                </label>
+                                            </div>
+                                            <label for="">Balisage du périmètre de sécurité:</label>
+                                            <div class="radio-options">
+                                                <label for="" class="radio-label">
+                                                    <input type="radio" class="form-check-input" name="balisage_perimetre" id="" value="Non"> Non
+                                                </label>
+                                                <label for="" class="radio-label">
+                                                    <input type="radio" class="form-check-input" name="balisage_perimetre" id="" value="Oui"> Oui
+                                                </label>
+                                                <label for="" class="radio-label">
+                                                    <input type="radio" class="form-check-input" name="balisage_perimetre" id="" value="Fait"> Fait 
+                                                </label>
+                                            </div>
+                                            <label for="">Protection des éléments non déplacables:</label>
+                                            <div class="radio-options">
+                                                <label for="" class="radio-label">
+                                                    <input type="radio" class="form-check-input" name="protection_element" id="" value="Non"> Non
+                                                </label>
+                                                <label for="" class="radio-label">
+                                                    <input type="radio" class="form-check-input" name="protection_element" id="" value="Oui"> Oui
+                                                </label>
+                                                <label for="" class="radio-label">
+                                                    <input type="radio" class="form-check-input" name="protection_element" id="" value="Fait"> Fait
+                                                </label>
+                                            </div>
+                                            <label for="">Consignation équipement/élctrique:</label>
+                                            <div class="radio-options">
+                                                <label for="" class="radio-label">
+                                                    <input type="radio" class="form-check-input" name="consignation_equipement" id="" value="Non"> Non
+                                                </label>
+                                                <label for="" class="radio-label">
+                                                    <input type="radio" class="form-check-input" name="consignation_equipement" id="" value="Oui"> Oui
+                                                </label>
+                                                <label for="" class="radio-label">
+                                                    <input type="radio" class="form-check-input" name="consignation_equipement" id="" value="Fait"> Fait
+                                                </label>
+                                            </div>
+                                            <label for="">Vidange - nettoyage - dépoussiérage:</label>
+                                            <div class="radio-options">
+                                                <label for="" class="radio-label">
+                                                    <input type="radio" class="form-check-input" name="vidange" id="" value="Non"> Non
+                                                </label>
+                                                <label for="" class="radio-label">
+                                                    <input type="radio" class="form-check-input" name="vidange" id="" value="Oui"> Oui
+                                                </label>
+                                                <label for="" class="radio-label">
+                                                    <input type="radio" class="form-check-input" name="vidange" id="" value="Fait"> Fait
+                                                </label>
+                                            </div>
+                                            <label for="">Dégazage (tuyauterie, cuve, citerne, ...):</label>
+                                            <div class="radio-options">
+                                                <label for="" class="radio-label">
+                                                    <input type="radio" class="form-check-input" name="degazage" id="" value="Non"> Non
+                                                </label>
+                                                <label for="" class="radio-label">
+                                                    <input type="radio" class="form-check-input" name="degazage" id="" value="Oui"> Oui
+                                                </label>
+                                                <label for="" class="radio-label">
+                                                    <input type="radio" class="form-check-input" name="degazage" id="" value="Fait"> Fait
+                                                </label>
+                                            </div>
+                                            <label for="">Isolation des tuyauteries:</label>
+                                            <div class="radio-options">
+                                                <label for="" class="radio-label">
+                                                    <input type="radio" class="form-check-input" name="isolation_tuyauterie" id="" value="Non"> Non
+                                                </label>
+                                                <label for="" class="radio-label">
+                                                    <input type="radio" class="form-check-input" name="isolation_tuyauterie" id="" value="Oui"> Oui
+                                                </label>
+                                                <label for="" class="radio-label">
+                                                    <input type="radio" class="form-check-input" name="isolation_tuyauterie" id="" value="Fait"> Fait
+                                                </label>
+                                            </div>
+                                            <label for="">Démontage de tuyauterie:</label>
+                                            <div class="radio-options">
+                                                <label for="" class="radio-label">
+                                                    <input type="radio" class="form-check-input" name="demontage_tuyauterie" id="" value="Non"> Non
+                                                </label>
+                                                <label for="" class="radio-label">
+                                                    <input type="radio" class="form-check-input" name="demontage_tuyauterie" id="" value="Oui"> Oui
+                                                </label>
+                                                <label for="" class="radio-label">
+                                                    <input type="radio" class="form-check-input" name="demontage_tuyauterie" id="" value="Fait"> Fait
+                                                </label>
+                                            </div>
+                                        </div>
+                                </div>
+                            </div>
+                        <div class="prevention">
+                        <div class="col-md-6">
+                                <h3 class="section-heading">MOYENS DE PREVENTION</h3><br>
+                                <label for="">Ecrans, panneaux:</label>
+                                <div class="radio-options">
+                                    <label for="" class="radio-label">
+                                        <input type="radio" class="form-check-input" name="ecran" id="" value="Non"> Non
+                                    </label>
+                                    <label for="" class="radio-label">
+                                        <input type="radio" class="form-check-input" name="ecran" id="" value="Oui"> Oui
+                                    </label>
+                                    <label for="" class="radio-label">
+                                        <input type="radio" class="form-check-input" name="ecran" id="" value="Fait"> Fait
+                                    </label>
+                                </div>
+                                <label for="">baches ignifugées:</label>
+                                <div class="radio-options">
+                                    <label for="" class="radio-label">
+                                        <input type="radio" class="form-check-input" name="bache" id="" value="Non"> Non
+                                    </label>
+                                    <label for="" class="radio-label">
+                                        <input type="radio" class="form-check-input" name="bache" id="" value="Oui"> Oui
+                                    </label>
+                                    <label for="" class="radio-label">
+                                        <input type="radio" class="form-check-input" name="bache" id="" value="Fait"> Fait
+                                    </label>
+                                </div>
+                                <label for="">Extincteurs adaptés:</label>
+                                <div class="radio-options">
+                                    <label for="" class="radio-label">
+                                        <input type="radio" class="form-check-input" name="extincteur" id="" value="Non"> Non
+                                    </label>
+                                    <label for="" class="radio-label">
+                                        <input type="radio" class="form-check-input" name="extincteur" id="" value="Oui"> Oui
+                                    </label>
+                                    <label for="" class="radio-label">
+                                        <input type="radio" class="form-check-input" name="extincteur" id="" value="Fait"> Fait
+                                </div>
+                                <label for="">Sable</label>
+                                <div class="radio-options">
+                                    <label for="" class="radio-label">
+                                        <input type="radio" class="form-check-input" name="sable" id="" value="Non"> Non
+                                    </label>
+                                    <label for="" class="radio-label">
+                                        <input type="radio" class="form-check-input" name="sable" id="" value="Oui"> Oui
+                                    </label>
+                                    <label for="" class="radio-label">
+                                        <input type="radio" class="form-check-input" name="sable" id="" value="Fait"> Fait
+                                    </label>
+                                </div>
+                                <label for=""><strong>VENTILATION FORCEE:</strong></label>
+                                <div class="radio-options">
+                                    <label for="" class="radio-label">
+                                        <input type="radio" class="form-check-input" name="ventilation" id="" value="Non"> Non
+                                    </label>
+                                    <label for="" class="radio-label">
+                                        <input type="radio" class="form-check-input" name="ventilation" id="" value="Oui"> Oui
+                                    </label>
+                                    <label for="" class="radio-label">
+                                        <input type="radio" class="form-check-input" name="ventilation" id="" value="Fait"> Fait
+                                    </label>
+                                </div>
+                                <label for=""><strong>TEST ATMOSPHERIQUE:</strong></label>
+                                <div class="radio-options">
+                                    <label for="" class="radio-label">
+                                        <input type="radio" class="form-check-input" name="test_atmospherique" id="" value="Non"> Non
+                                    </label>
+                                    <label for="" class="radio-label">
+                                        <input type="radio" class="form-check-input" name="test_atmospherique" id="" value="Oui"> Oui
+                                    </label>
+                                    <label for="" class="radio-label">
+                                        <input type="radio" class="form-check-input" name="test_atmospherique" id="" value="Fait"> Fait
+                                    </label>
+                                </div>
+                                <label for="">Teneur en oxygène:</label>
+                                <div class="radio-options">
+                                    <label for="" class="radio-label">
+                                        <input type="radio" class="form-check-input" name="teneur_oxygene" id="" value="Non"> Non
+                                    </label>
+                                    <label for="" class="radio-label">
+                                        <input type="radio" class="form-check-input" name="teneur_oxygene" id="" value="Oui"> Oui
+                                    </label>
+                                    <label for="" class="radio-label">
+                                        <input type="radio" class="form-check-input" name="teneur_oxygene" id="" value="Fait"> Fait
+                                    </label>
+                                </div>
+                                <label for="">Teneur LIE:</label>
+                                <div class="radio-options">
+                                    <label for="" class="radio-label">
+                                        <input type="radio" class="form-check-input" name="teneur_LIE" id="" value="Non"> Non
+                                    </label>
+                                    <label for="" class="radio-label">
+                                        <input type="radio" class="form-check-input" name="teneur_LIE" id="" value="Oui"> Oui
+                                    </label>
+                                    <label for="" class="radio-label">
+                                        <input type="radio" class="form-check-input" name="teneur_LIE" id="" value="Fait"> Fait
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <strong>Surveillance de sécurité pendant les travaux</strong><br>
+                    <div class="form-group">
+                        <label for="" class="input-label">Nom et signature</label><br>
+                        <textarea type="text" class="form-control col-md-5" name="nom_surveillance_pendant" id=""></textarea>
+                    </div>
+
+                    
+                    <strong>Surveillance de sécurité après les travaux</strong><br>
+                    <div class="form-group">
+                        A partir de &nbsp;
+                        <input type="time" class="input-time" name="heure_debut_surveillance" id=""> &nbsp;&nbsp;
+                        jusqu'à &nbsp;
+                        <input type="time" class="input-time" name="heure_fin_surveillance" id=""><br>
+                    </div>
+                    <label for="" class="input-label">Nom et signature</label><br>
+                    <textarea type="text" class="form-control" name="nom_surveillance_apres" id=""></textarea>
+                    <br>
+
+                    <strong>ALERTE EN CAS D'INCENDIE OU D'ACCIDENT</strong><br>
+                    <textarea type="text" class="form-control" name="alerte" id=""></textarea><br>
+
+                    <strong>NUMERO D'URGENCE</strong><br>
+                    <div class="custom-container">
+                        <div class="left-column">
+                            <div class="form-row">
+                                <div class="col-md-6 form-group">
+                                    Pompier: 
+                                    <input type="text" class="form-control" name="numero_pompier" id=""><br>
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    Responsable du site: 
+                                    <input type="text" class="form-control" name="numero_site" id=""><br>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="right-column">
+                            <div class="form-row">
+                                <div class="col-md-6 form-group">
+                                    Responsable Jovena: 
+                                    <input type="text" class="form-control" name="numero_jovena" id=""><br>
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    Ambulance: 
+                                    <input type="text" class="form-control" name="numero_ambulance" id=""><br><br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>Personnes ou services concernés</th>
+                            <th>Nom</th>
+                            <th>Qualité</th>
+                            <th>Visa</th>
+                        </tr>
+                        <tr>
+                            <td>Responsable des travaux</td>
+                            <td><input type="text" class="form-control" name="nom_responsable_travaux" id=""></td>
+                            <td><input type="text" class="form-control" name="qualite_responsable_travaux" id=""></td>
+                            <td><input type="text" class="form-control" name="visa_responsable_travaux" id=""></td>
+                        </tr>
+                        <tr>
+                            <td>Responsable HSE</td>
+                            <td><input type="text" class="form-control" name="nom_responsable_HSE" id=""></td>
+                            <td><input type="text" class="form-control" name="qualite_responsable_HSE" id=""></td>
+                            <td><input type="text" class="form-control" name="visa_responsable_HSE" id=""></td>
+                        </tr>
+                        <tr>
+                            <td>Responsable du site</td>
+                            <td><input type="text" class="form-control" name="nom_responsable_site" id=""></td>
+                            <td><input type="text" class="form-control" name="qualite_responsable_site" id=""></td>
+                            <td><input type="text" class="form-control" name="visa_responsable_site" id=""></td>
+                        </tr>
+                        <tr>
+                            <td>Autre</td>
+                            <td><input type="text" class="form-control" name="nom_responsable_autre" id=""></td>
+                            <td><input type="text" class="form-control" name="qualite_responsable_autre" id=""></td>
+                            <td><input type="text" class="form-control" name="visa_responsable_autre" id=""></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-body">
+                    Permis de feu délivré le: &nbsp;&nbsp;
+                    <input type="date" class="" name="permis_feu_delivre" id="">
+                    <input type="hidden" value="{{user}}" name="user_profile_feu">
+                    <input type="hidden" value="en_attente" name="validation"><br><br>
+
+                    <button type="submit" class="btn btn-success">Enregistrer</button>
+                    <br>
+            
+
+                {% for message in messages %}
+                    <h3 id="messages">{{ message }}</h3>
+                {% endfor %}
+
+                </div>
+            </div>
+        </div>
+    </form> 
+</div>
+{% endblock content %}

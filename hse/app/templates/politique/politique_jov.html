@@ -1,0 +1,19 @@
+{% extends "app/home_jov.html" %} 
+{% load static %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="card">
+            <div class="card-body">
+                <div class="contain">
+                    <h1 class="text-center">Politique d'Engagement du Jovena</h1><br>
+                </div>
+                {% for article in articles %}
+                    <p>{{ article.info_jov }}</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

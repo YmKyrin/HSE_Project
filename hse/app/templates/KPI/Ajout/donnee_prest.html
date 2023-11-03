@@ -1,0 +1,439 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire à plusieurs pages</title>
+    <link rel="stylesheet" href="{% static '/css/KPI.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+</head>
+<body>
+    <div class="container"><br><br>
+        <form action="" method="POST">
+            <input type="hidden" name="name" value="{{user}}">
+            <div class="form-container">
+                <!-- Page 1 -->
+                <div class="form">
+                    <div class="card">
+                        <div class="card-body">
+                            {% csrf_token %}
+                            {% for message in messages %}
+                            <h5 id="messages">{{ message }}</h5>
+                            {% endfor %}
+                            <a class="btn btn-outline-danger" href="{% url 'KPI_prest' %}">Exit</a><br>
+                                    <h3>Performance sécurité & santé</h3>
+                                    <div class="details personal">
+                                        <span class="title"></span> <br>
+                                        <input type="hidden" name="name" value="{{user}}">
+                                        
+                                        <div class="fields">
+                                            <div class="form-group">
+                                                <label>Date</label>
+                                                <input type="date" class="form-control" name="date" placeholder="" required>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Hommes</label>
+                                                <input type="number" class="form-control" name="homme" placeholder="" required>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Femmes</label>
+                                                <input type="number" class="form-control" name="femme" placeholder="" required>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Effectif total sur site</label>
+                                                <input type="number" class="form-control" name="effectif_total_sur_site" placeholder="" required>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Heures travallées (+ durée de trajet)</label>
+                                                <input type="number" class="form-control" name="heure_travailler" placeholder="" required>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Fatalité</label>
+                                                <input type="number" class="form-control" name="fatalite" placeholder="" required>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Accident avec arret de travail (+48)</label>
+                                                <input type="number" class="form-control" name="accident" placeholder="" required>
+                                            </div>
+                                        
+                                            <div class="form-group">
+                                                <label>Poste adapté</label>
+                                                <input type="number" class="form-control" name="poste_adapte" placeholder="" required>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Soins Médicaux</label>
+                                                <input type="number" class="form-control" name="soins_medicaux" placeholder="" required>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Premiers secours</label>
+                                                <input type="number" class="form-control" name="premier_secours" placeholder="" required>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Presque accident</label>
+                                                <input type="number" class="form-control" name="presque_accident" placeholder="" required>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Dommage Matériels</label>
+                                                <input type="number" class="form-control" name="dommage_materiel" placeholder="" required>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Heures perdues</label>
+                                                <input type="number" class="form-control" name="heure_perdue" placeholder="" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                        </div>
+                    </div> 
+                </div>
+
+                
+                <!-- Page 2 -->
+                <div class="form">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3>Accident de circulation</h3>
+                            <div class="details address">
+                                <span class="title"></span> <br>
+
+                                <div class="fields">
+                                    <div class="form-group">
+                                        <label>Km parcourus</label>
+                                        <input type="number" class="form-control" name="km_parcouru" placeholder="" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Nombre d'incident</label>
+                                        <input type="number" class="form-control" name="nombre_incident" placeholder="" required>
+                                    </div>
+                    
+                                    <div class="form-group">
+                                        <label>Nombre d'accélération brusque</label>
+                                        <input type="number" class="form-control" name="nombre_acceleration_brusque" placeholder="" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Nombre de freinage brusque</label>
+                                        <input type="number" class="form-control" name="nombre_freinage_brusque" placeholder="" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Nombre de depassement de la limitaion de vitesse</label>
+                                        <input type="number" class="form-control" name="nombre_depassement" placeholder="" required>
+                                    </div>
+                                </div>
+                            </div> <br>
+
+                            <h3>Surete / Acte de malveillance</h3>
+                            <div class="details address">
+                                <span class="title"></span> <br>
+
+                                <div class="fields">
+                                    <div class="form-group">
+                                        <label>Nombre de maladies (maladies transmissibles) déclarées</label>
+                                        <input type="number" class="form-control" name="nombre_de_malades" placeholder="" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Violation des règles qui sauvent des vies</label>
+                                        <input type="number" class="form-control" name="violation_des_regles" placeholder="" required>
+                                    </div>
+                                </div>
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ajoutez les autres pages ici -->
+
+                 <div class="form">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3>Performance environnementale</h3>
+                            <div class="details address">
+                                <span class="title"></span> <br>
+
+                                <div class="fields">
+                                    <div class="form-group">
+                                        <label>Nombre de déversements (substances dangereuse)</label>
+                                        <input type="number" class="form-control" name="nombre_de_deversement" placeholder="" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Volume de déversement (ltr)</label>
+                                        <input type="number" class="form-control" name="volume_de_deversement" placeholder="" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Surface impactée (m2)</label>
+                                        <input type="number" class="form-control" name="surface_impactee" placeholder="" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Nombre d'inspections de</label>
+                                        <input type="number" class="form-control" name="nombre_inspection" placeholder="" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Zones de déchets</label>
+                                        <input type="number" class="form-control" name="zones_de_dechets" placeholder="" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Zones de stockage de produits chimiques</label>
+                                        <input type="number" class="form-control" name="zones_de_stockage" placeholder="" required>
+                                    </div>
+                                </div>
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3>Production de déchets</h3>
+                            <div class="details address">
+                                <span class="title"></span> <br>
+
+                                <div class="fields">
+                                    <div class="form-group">
+                                        <label>Déchets inertes (m3)</label>
+                                        <input type="number" class="form-control" name="dechets_inerte" placeholder="" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Déchets organiques (m3)</label>
+                                        <input type="number" class="form-control" name="dechets_organique" placeholder="" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Déchets plastiques (m3)</label>
+                                        <input type="number" class="form-control" name="dechets_plastique" placeholder="" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Déchets d'hydrocarbure</label>
+                                        <input type="number" class="form-control" name="dechets_hydrocarbure" placeholder="" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Déchets D3E</label>
+                                        <input type="number" class="form-control" name="dechets_d3e" placeholder="" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Eaux usées / effluents (m3)</label>
+                                        <input type="number" class="form-control" name="eaux_usees" placeholder="" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Consommation d'eau extraite / de puits (m3)</label>
+                                        <input type="number" class="form-control" name="consommation_eau_extraite" placeholder="" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Consommation de carburant (GO, SP - litres)</label>
+                                        <input type="number" class="form-control" name="consommation_de_carburant" placeholder="" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Consommation d'électricité (kwH)</label>
+                                        <input type="number" class="form-control" name="consommation_electricite" placeholder="" required>
+                                    </div>
+                                </div>
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3>Nombre de dépassement de bruit</h3>
+                            <div class="details address">
+                                <span class="title"></span> <br>
+
+                                <div class="fields">
+                                    <div class="form-group">
+                                        <label>Valeur limite de seuil maximale - 85 dBA</label>
+                                        <input type="number" class="form-control" name="valeur_limite_seuil" placeholder="" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>     &#10006; Sur site</label>
+                                        <input type="number" class="form-control" name="x_sur_site" placeholder="" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>     &#10006; Aux récepteurs les plus proches</label>
+                                        <input type="number" class="form-control" name="x_aux_racepteurs" placeholder="" required>
+                                    </div>
+                                </div>
+                            </div> <br>
+
+                            <h3>Nombre de dépassements de la qualité de l'air</h3>
+                            <div class="form-group">
+                                <label>     &#10006; Sources d'émission</label>
+                                <input type="number" class="form-control" name="x_source_emission" placeholder="" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>     &#10006; Qualité de l'air ambiant</label>
+                                <input type="number" class="form-control" name="x_qualite_de_air" placeholder="" required>
+                            </div>
+
+                            <h3>Nombre de griefs liés à</h3>
+                            <div class="form-group">
+                                <label>     &#10006; Santé</label>
+                                <input type="number" class="form-control" name="x_sante" placeholder="" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>     &#10006; Sécurité</label>
+                                <input type="number" class="form-control" name="x_securite" placeholder="" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>     &#10006; Environnement</label>
+                                <input type="number" class="form-control" name="x_environnement" placeholder="" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>     &#10006; Social</label>
+                                <input type="number" class="form-control" name="x_social" placeholder="" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3>Performance Sociale</h3>
+                            <div class="form-group">
+                                <label>Aucun incident social ou communautaire</label>
+                                <input type="number" class="form-control" name="aucun_incident_social" placeholder="" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Nombre de travailleurs migrants (hors localités)</label>
+                                <input type="number" class="form-control" name="nombre_de_travailleurs_migrants" placeholder="" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Nombre de travailleurs locaux</label>
+                                <input type="number" class="form-control" name="nombre_de_travailleurs_locaux" placeholder="" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Pourcentage de la mian-d'oeuvre dans l'hébergement des travailleurs dans les projets</label>
+                                <input type="number" class="form-control" name="pourcentage_main_oeuvre" placeholder="" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Durée moyenne du contrat de travail</label>
+                                <input type="number" class="form-control" name="duree_moyenne_travail" placeholder="" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3>Nombre d'inspections</h3>
+                            <div class="form-group">
+                                <label>Logement des travailleurs</label>
+                                <input type="number" class="form-control" name="logement_des_travailleurs" placeholder="" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Approvisionnement en eau potable</label>
+                                <input type="number" class="form-control" name="approvionnement_eau_potable" placeholder="" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Nombre d'activités d'engagement avec les parties prenantes ou les communautés</label>
+                                <input type="number" class="form-control" name="nombre_acticivite_engagement" placeholder="" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Nombre d'activités de consultation publique</label>
+                                <input type="number" class="form-control" name="nombre_activites" placeholder="" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3>Formation des travaillerus en HSE & ES</h3>
+                            <div class="form-group">
+                                <label>Inductions sur site</label>
+                                <input type="number" class="form-control" name="induction_sur_site" placeholder="" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Exercice d'urgence</label>
+                                <input type="number" class="form-control" name="exercice_urgence" placeholder="" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Toolbox</label>
+                                <input type="number" class="form-control" name="toolbox" placeholder="" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Formation spécifique à une tache</label>
+                                <input type="number" class="form-control" name="formation_specifique" placeholder="" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Starter</label>
+                                <input type="number" class="form-control" name="starter" placeholder="" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Nombre d'audits HSSES</label>
+                                <input type="number" class="form-control" name="nombre_outil_hsses" placeholder="" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Nombre d'inspections HSSES</label>
+                                <input type="number" class="form-control" name="nombre_inspection_hsses" placeholder="" required> <br><br>
+                                <button class="btn btn-outline-success" type="submit">Envoyer</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form">
+
+                    <h3>FIN</h3>
+                    
+                </div>
+            </div>
+            <button class="backBtn">Retour</button>
+            <button class="nextBtn">Suivant</button><br><br>
+            <!-- <button class="" type="submit">Suv</button> -->
+        </form>
+    </div>
+
+    <script src="{% static '/js/KPI.js' %}"></script>
+</body>
+</html>

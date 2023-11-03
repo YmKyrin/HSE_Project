@@ -1,0 +1,66 @@
+{% extends "app/home_stat.html" %} 
+{% load static %}
+
+{% block content %}
+
+<div class="">
+          
+        <div class="">
+            <h1>Station Service</h1>
+            <small>Informations / Station Service</small>
+        </div>
+
+        <br>
+        <div class="position_info">
+            <div class="box_info">
+                <h1>Information Personnelle</h1>
+                <br>
+
+                <div class="">
+                    <label for="">Id :</label>
+                    <span>{{ profil_utilisateur.id_poste }}</span>
+                </div>
+                <br>
+                <div class="">
+                    <label for="">Poste :</label>
+                    <span>{{ profil_utilisateur.poste }}</span>
+                </div>
+                <br>
+                <div class="">
+                    <label for="">Nom :</label>
+                    <span>{{ user.last_name }}</span>
+                </div>
+                <br>    
+                <div class="">
+                    <label for="">Prenom :</label>
+                    <span>{{ user.first_name }}</span>
+                </div>
+                <br>
+                <div class="">
+                    <label for="">Nom d'utilisateur :</label>
+                    <span>{{ user.username }}</span>
+                </div>
+                <br>    
+                <div class="">
+                    <label for="">E-Mail :</label>
+                    <span>{{ user.email }}</span>
+                </div>
+                <br>    
+                <div class="">
+                    <label for="">Date d'entrer :</label>
+                    <span> {{ user.date_joined }}</span>
+                </div>
+                <br>    
+                <div class="">
+                    <label for="">Dernier Connexion :</label>
+                    <span>{{ user.last_login }}</span>
+                </div>
+            </div>
+            <div class="image_info">
+                  <img src="{%static 'images/info.png' %}" width="500" height="400" alt=""> 
+               
+            </div>
+        </div>
+    
+</div>
+{% endblock content %}

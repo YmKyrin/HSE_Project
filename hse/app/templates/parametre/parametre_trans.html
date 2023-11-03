@@ -1,0 +1,45 @@
+{% extends "app/home_trans.html" %} 
+{% load static %}
+
+{% block content %}
+
+        <div class="">
+                 
+                <div class="">
+                    <h1>Transporteur</h1>
+                    <small>Options / Transporteur</small>
+                </div>
+            
+                <h1>Changer le mot de passe</h1>
+            
+                <form method="POST" class ="password">
+                    {% csrf_token %}
+                    
+                    {{ form.non_field_errors }}
+                     <br>
+                    <div class="">
+                        <label for="{{ form.old_password.id_for_label }}">{{ form.old_password.label }} :</label>
+                        <input type="password" name="{{ form.old_password.name }}" id="{{ form.old_password.id_for_label }}" data-error="{{ form.old_password.errors }}">
+                    </div>
+                    <br>
+                    <div class="">
+                        <label for="{{ form.new_password1.id_for_label }}">{{ form.new_password1.label }} :</label>
+                        <input type="password" name="{{ form.new_password1.name }}" id="{{ form.new_password1.id_for_label }}" data-error="{{ form.new_password1.errors }}">
+                    </div>
+                    <br>
+                    <div class="">
+                        <label for="{{ form.new_password2.id_for_label }}">{{ form.new_password2.label }} :</label>
+                        <input type="password" name="{{ form.new_password2.name }}" id="{{ form.new_password2.id_for_label }}" data-error="{{ form.new_password2.errors }}">
+                    </div>
+                    
+                    <br>
+                    
+                    <button type="submit" class="btn_password">Changer le mot de passe</button>
+                    {% for message in messages %}
+                    <p id="messages">{{ message }}</p>
+                    {% endfor %}
+                </form>
+            
+        </div>
+{% endblock content %}
+    

@@ -1,0 +1,493 @@
+{% extends "app/home_prest.html" %} 
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+    <br><br>
+        <div class="text_kpi">
+            <h1>Pas de compromis en matière de sécurité</h1>
+        </div>
+        <a href="{% url 'KPI_prest_ajout' %}"><button class="btn btn-primary">AJOUTER</button></a>
+        
+       
+        <div class="grid-container">
+            <div class="grid-item"><strong> Taux de fréquence incident</strong> <br> {{ttl}} </div>
+            <div class="grid-item"><strong> Somme Totale: </strong><br>{{ttl1}}</div>
+            <div class="grid-item"><strong> Nombre d'accident: </strong>{{somme_accident}} <br><strong>Heure Perdues: </strong>{{somme_heure_perdue}} </div>
+        </div>
+         
+        <form action="" method="POST" id="search-form">
+            {% csrf_token %}
+            <label for="start_date">Date de début :</label>
+            <input type="date" name="start_date" id="start_date" required>
+            <label for="end_date">Date de fin :</label>
+            <input type="date" name="end_date" id="end_date" required>
+            
+            <button type="submit" class="btn btn-secondary">Search</button>
+            <a href="{% url 'KPI_prest' %}"><button type="button" id="refresh-button" class="btn btn-success">Rafraîchir</button></a>       
+        </form>
+        <br>
+
+        <table class="table table-hover">
+            <thead>
+                
+                <tr>
+                    <th>specifications</th>
+                    {% for kpi in events %}
+                        <th>{{ kpi.date }}</th>
+                    {% endfor %}
+                    <th>total</th>
+                </tr>
+                
+            </thead>
+            <tbody>
+                
+                <tr>
+                    <td>homme</td>
+                    {% for kpi in events %}
+                        <td>{{kpi.homme}}</td>
+                    {% endfor %}
+                    <td>{{somme_homme}}</td>
+                </tr>
+                <tr>
+                    <td>femme</td>
+                    {% for kpi in events %}
+                        <td>{{kpi.femme}}</td>
+                    {% endfor %}
+                    <td>{{somme_femme}}</td>
+                </tr>
+                <tr>
+                    <td>effectif total sur site</td>
+                    {% for kpi in events %}
+                        <td>{{kpi.effectif_total_sur_site}}</td>
+                    {% endfor %}
+                    <td>{{somme_effectif_total_sur_site}}</td>
+                </tr>
+                <tr>
+                    <td>heure travailler</td>
+                    {% for kpi in events %}
+                        <td>{{kpi.heure_travailler}}</td>
+                    {% endfor %}
+                    <td>{{somme_heure_travailler}}</td>
+                </tr>
+                <tr>
+                    <td>fatalite</td>
+                    {% for kpi in events %}
+                        <td>{{kpi.fatalite}}</td>
+                    {% endfor %}
+                    <td>{{somme_fatalite}}</td>
+                </tr>
+                <tr>
+                    <td>accident</td>
+                    {% for kpi in events %}
+                        <td>{{kpi.accident}}</td>
+                    {% endfor %}
+                    <td>{{somme_accident}}</td>
+                </tr>
+                <tr>
+                    <td>Poste adapte</td>
+                    {% for kpi in events %}
+                        <td>{{kpi.poste_adapte}}</td>
+                    {% endfor %}
+                    <td>{{somme_poste_adapte}}</td>
+                </tr>
+                <tr>
+                    <td>Soins Medicaux</td>
+                    {% for kpi in events %}
+                        <td>{{kpi.soins_medicaux}}</td>
+                    {% endfor %}
+                    <td>{{somme_soins_medicaux}}</td>
+                </tr>
+           
+                <tr>
+                    <td>Premier Secours</td>
+                    {% for kpi in events %}   
+                        <td>{{kpi.premier_secours}}</td>
+                    {% endfor %}
+                    <td>{{somme_premier_secours}}</td>
+                </tr>
+           
+                <tr>
+                    <td>Presque accident</td>
+                    {% for kpi in events %}  
+                        <td>{{kpi.presque_accident}}</td>
+                    {% endfor %}
+                    <td>{{somme_presque_accident}}</td>
+                </tr>
+                <tr>
+                    <td>dommage materiel</td>
+                    {% for kpi in events %} 
+                        <td>{{kpi.dommage_materiel}}</td>
+                    {% endfor %}
+                    <td>{{somme_dommage_materiel}}</td>
+                </tr>
+                <tr>
+                    <td>Heure perdue</td>
+                    {% for kpi in events %} 
+                        <td>{{kpi.heure_perdue}}</td>
+                    {% endfor %}
+                    <td>{{somme_heure_perdue}}</td>
+                </tr>
+                <tr>
+                    <td>Km parcouru</td>
+                    {% for kpi in events %}
+                        <td>{{kpi.km_parcouru}}</td>
+                    {% endfor %}
+                    <td>{{somme_km_parcouru}}</td>
+                </tr>
+                <tr>
+                    <td>nombre incident</td>
+                    {% for kpi in events %} 
+                        <td>{{kpi.nombre_incident}}</td>
+                    {% endfor %}
+                    <td>{{somme_nombre_incident}}</td>
+                </tr>
+                <tr>
+                    <td>nombre acceleration brusque</td>
+                    {% for kpi in events %}  
+                        <td>{{kpi.nombre_acceleration_brusque}}</td>
+                    {% endfor %}
+                    <td>{{somme_nombre_acceleration_brusque}}</td>
+                </tr>
+                <tr>
+                    <td>nombre freinage brusque</td>
+                    {% for kpi in events %}
+                        <td>{{kpi.nombre_freinage_brusque}}</td>
+                    {% endfor %}
+                    <td>{{somme_nombre_freinage_brusque}}</td>
+                </tr>
+                <tr>
+                    <td>nombre depassement</td>
+                    {% for kpi in events %}    
+                        <td>{{kpi.nombre_depassement}}</td>
+                    {% endfor %}
+                    <td>{{somme_nombre_depassement}}</td>
+                </tr>
+
+
+
+
+                    <tr>
+                        <td>nombre de malade</td>
+                        {% for kpi in events %}    
+                            <td>{{kpi.nombre_de_malades}}</td>
+                        {% endfor %}
+                        <td>{{somme_nombre_de_malades}}</td>
+                    </tr>
+                   
+                    <tr>
+                        <td>violation des regles</td>
+                        {% for kpi in events %}    
+                            <td>{{kpi.violation_des_regles}}</td>
+                        {% endfor %}
+                        <td>{{somme_violation_des_regles}}</td>
+                    </tr>
+                    <tr>
+                        <td>nombre de deversement</td>
+                        {% for kpi in events %}    
+                            <td>{{kpi.nombre_de_deversement}}</td>
+                        {% endfor %}
+                        <td>{{somme_nombre_de_deversement}}</td>
+                    </tr>
+                    <tr>
+                        <td>volume de deversement</td>
+                        {% for kpi in events %}    
+                            <td>{{kpi.volume_de_deversement}}</td>
+                        {% endfor %}
+                        <td>{{somme_volume_de_deversement}}</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>surface impactee</td>
+                        {% for kpi in events %}    
+                            <td>{{kpi.surface_impactee}}</td>
+                        {% endfor %}
+                        <td>{{somme_surface_impactee}}</td>
+                    </tr>
+                    <tr>
+                        <td>nombre inspection</td>
+                        {% for kpi in events %}    
+                            <td>{{kpi.nombre_inspection}}</td>
+                        {% endfor %}
+                        <td>{{somme_nombre_inspection}}</td>
+                    </tr>
+                    <tr>
+                        <td>zones de dechats</td>
+                        {% for kpi in events %}    
+                            <td>{{kpi.zones_de_dechets}}</td>
+                        {% endfor %}
+                        <td>{{somme_zones_de_dechets}}</td>
+                    </tr>
+                    <tr>
+                        <td>zones de stockage</td>
+                        {% for kpi in events %}    
+                            <td>{{kpi.zones_de_stockage}}</td>
+                        {% endfor %}
+                        <td>{{somme_zones_de_stockage}}</td>
+                    </tr>
+                    <tr>
+                        <td>dechets inerte</td>
+                        {% for kpi in events %}    
+                            <td>{{kpi.dechets_inerte}}</td>
+                        {% endfor %}
+                        <td>{{somme_dechets_inerte}}</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>dechets organique</td>
+                        {% for kpi in events %}    
+                            <td>{{kpi.dechets_organique}}</td>
+                        {% endfor %}
+                        <td>{{somme_dechets_organique}}</td>
+                    </tr>
+                    <tr>
+                        <td>dechets plastique</td>
+                        {% for kpi in events %}    
+                            <td>{{kpi.dechets_plastique}}</td>
+                        {% endfor %}
+                        <td>{{somme_dechets_plastique}}</td>
+                    </tr>
+                    <tr>
+                        <td>dechets hydrocarbure</td>
+                        {% for kpi in events %}    
+                            <td>{{kpi.dechets_hydrocarbure}}</td>
+                        {% endfor %}
+                        <td>{{somme_dechets_hydrocarbure}}</td>
+                    </tr>
+                    <tr>
+                        <td>dechets d3e</td>
+                        {% for kpi in events %}    
+                            <td>{{kpi.dechets_d3e}}</td>
+                        {% endfor %}
+                        <td>{{somme_dechets_d3e}}</td>
+                    </tr>
+                    <tr>
+                        <td>eaux usees</td>
+                        {% for kpi in events %}    
+                            <td>{{kpi.eaux_usees}}</td>
+                        {% endfor %}
+                        <td>{{somme_eaux_usees}}</td>
+                    </tr>
+                    <tr>
+                        <td>consommation eau extraite</td>
+                        {% for kpi in events %}    
+                            <td>{{kpi.consommation_eau_extraite}}</td>
+                        {% endfor %}
+                        <td>{{somme_consommation_eau_extraite}}</td>
+                    </tr>
+                    <tr>
+                        <td>consommation de carburant</td>
+                        {% for kpi in events %}    
+                            <td>{{kpi.consommation_de_carburant}}</td>
+                        {% endfor %}
+                        <td>{{somme_consommation_de_carburant}}</td>
+                    </tr>
+                    <tr>
+                        <td>consommation electricite</td>
+                        {% for kpi in events %}    
+                            <td>{{kpi.consommation_electricite}}</td>
+                        {% endfor %}
+                        <td>{{somme_consommation_electricite}}</td>
+                    </tr>
+                    <tr>
+                        <td>valeur limite seuil</td>
+                        {% for kpi in events %}    
+                            <td>{{kpi.valeur_limite_seuil}}</td>
+                        {% endfor %}
+                        <td>{{somme_valeur_limite_seuil}}</td>
+                    </tr>
+                    <tr>
+                        <td>x sur site</td>
+                        {% for kpi in events %}    
+                            <td>{{kpi.x_sur_site}}</td>
+                        {% endfor %}
+                        <td>{{somme_x_sur_site}}</td>
+                    </tr>
+                    <tr>
+                        <td>x aux recepteurs</td>
+                        {% for kpi in events %}    
+                            <td>{{kpi.x_aux_racepteurs}}</td>
+                        {% endfor %}
+                        <td>{{somme_x_aux_racepteurs}}</td>
+                    </tr>
+                    <tr>
+                        <td>x source emission</td>
+                        {% for kpi in events %}    
+                            <td>{{kpi.x_source_emission}}</td>
+                        {% endfor %}
+                        <td>{{somme_x_source_emission}}</td>
+                    </tr>
+                    <tr>
+                        <td>x qualite de l air</td>
+                        {% for kpi in events %}    
+                            <td>{{kpi.x_qualite_de_air}}</td>
+                        {% endfor %}
+                        <td>{{somme_x_qualite_de_air}}</td>
+                    </tr>
+                    <tr>
+                        <td>x sante</td>
+                        {% for kpi in events %}    
+                            <td>{{kpi.x_sante}}</td>
+                        {% endfor %}
+                        <td>{{somme_x_sante}}</td>
+                    </tr>
+                    <tr>
+                        <td>x securite</td>
+                        {% for kpi in events %}    
+                            <td>{{kpi.x_securite}}</td>
+                        {% endfor %}
+                        <td>{{somme_x_securite}}</td>
+                    </tr>
+                    <tr>
+                        <td>x environnement</td>
+                        {% for kpi in events %}    
+                            <td>{{kpi.x_environnement}}</td>
+                        {% endfor %}
+                        <td>{{somme_x_environnement}}</td>
+                    </tr>
+                    <tr>
+                        <td>x social</td>
+                        {% for kpi in events %}    
+                            <td>{{kpi.x_social}}</td>
+                        {% endfor %}
+                        <td>{{somme_x_social}}</td>
+                    </tr>
+                    <tr>
+                        <td>aucun incident social</td>
+                        {% for kpi in events %}    
+                            <td>{{kpi.aucun_incident_social}}</td>
+                        {% endfor %}
+                        <td>{{somme_aucun_incident_social}}</td>
+                    </tr>
+                    <tr>
+                        <td>nombre de travailleur migrant</td>
+                        {% for kpi in events %}    
+                            <td>{{kpi.nombre_de_travailleurs_migrants}}</td>
+                        {% endfor %}
+                        <td>{{somme_nombre_de_travailleurs_migrants}}</td>
+                    </tr>
+                    <tr>
+                        <td>nombre de travailleurs locaux</td>
+                        {% for kpi in events %}    
+                            <td>{{kpi.nombre_de_travailleurs_locaux}}</td>
+                        {% endfor %}
+                        <td>{{somme_nombre_de_travailleurs_locaux}}</td>
+                    </tr>
+                    <tr>
+                        <td>pourcentage de mains de oeuvre</td>
+                        {% for kpi in events %}    
+                            <td>{{kpi.pourcentage_main_oeuvre}}</td>
+                        {% endfor %}
+                        <td>{{somme_pourcentage_main_oeuvre}}</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>duree moyenne travail</td>
+                        {% for kpi in events %}    
+                            <td>{{kpi.duree_moyenne_travail}}</td>
+                        {% endfor %}
+                        <td>{{somme_duree_moyenne_travail}}</td>
+                    </tr>
+                    <tr>
+                        <td>logement des travailleurs</td>
+                        {% for kpi in events %}    
+                            <td>{{kpi.logement_des_travailleurs}}</td>
+                        {% endfor %}
+                        <td>{{somme_logement_des_travailleurs}}</td>
+                    </tr>
+                    <tr>
+                        <td>approvisionnement eau potable</td>
+                        {% for kpi in events %}    
+                            <td>{{kpi.approvionnement_eau_potable}}</td>
+                        {% endfor %}
+                        <td>{{somme_approvionnement_eau_potable}}</td>
+                    </tr>
+                    <tr>
+                        <td>nombre activite engagement</td>
+                        {% for kpi in events %}    
+                            <td>{{kpi.nombre_acticivite_engagement}}</td>
+                        {% endfor %}
+                        <td>{{somme_nombre_acticivite_engagement}}</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>nombre activites</td>
+                        {% for kpi in events %}    
+                            <td>{{kpi.nombre_activites}}</td>
+                        {% endfor %}
+                        <td>{{somme_nombre_activites}}</td>
+                    </tr>
+                    <tr>
+                        <td>induction sur site</td>
+                        {% for kpi in events %}    
+                            <td>{{kpi.induction_sur_site}}</td>
+                        {% endfor %}
+                        <td>{{somme_induction_sur_site}}</td>
+                    </tr>
+                    <tr>
+                        <td>exercice d urgence</td>
+                        {% for kpi in events %}    
+                            <td>{{kpi.exercice_urgence}}</td>
+                        {% endfor %}
+                        <td>{{somme_exercice_urgence}}</td>
+                    </tr>
+                    <tr>
+                        <td>toolbox</td>
+                        {% for kpi in events %}    
+                            <td>{{kpi.toolbox}}</td>
+                        {% endfor %}
+                        <td>{{somme_toolbox}}</td>
+                    </tr>
+                    <tr>
+                        <td>formation specifique</td>
+                        {% for kpi in events %}    
+                            <td>{{kpi.formation_specifique}}</td>
+                        {% endfor %}
+                        <td>{{somme_formation_specifique}}</td>
+                    </tr>
+                    <tr>
+                        <td>starter</td>
+                        {% for kpi in events %}    
+                            <td>{{kpi.starter}}</td>
+                        {% endfor %}
+                        <td>{{somme_starter}}</td>
+                    </tr>
+                    <tr>
+                        <td>nombre outil hsses</td>
+                        {% for kpi in events %}    
+                            <td>{{kpi.nombre_outil_hsses}}</td>
+                        {% endfor %}
+                        <td>{{somme_nombre_outil_hsses}}</td>
+                    </tr>
+                    <tr>
+                        <td>nombre d inspection hsses</td>
+                        {% for kpi in events %}    
+                            <td>{{kpi.nombre_inspection_hsses}}</td>
+                        {% endfor %}
+                        <td>{{somme_nombre_inspection_hsses}}</td>
+                    </tr>
+
+
+
+                    <tr>
+                        <td>taux frequence incident</td>
+                        {% for kpi in events %}
+                            
+                            <td>{{kpi.taux_frequence_incident}}</td>
+                        {% endfor %}
+                        <td>{{ttl}}</td>
+                    </tr>
+                    <tr>
+                        <td>taux gravite incident</td>
+                        {% for kpi in events %}
+                            <td>{{kpi.taux_gravite_incident}}</td>
+                        {% endfor %}
+                        <td>0</td>
+                    </tr>
+                          
+            </tbody>
+        </table>
+</div>
+<br>
+{% endblock content %}

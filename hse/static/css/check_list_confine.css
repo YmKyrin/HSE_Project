@@ -1,0 +1,156 @@
+.form_confine_description
+{
+    background-color: white;
+    padding: 15px;
+    border-radius: 20px;
+}
+
+
+
+.form_confine_site
+{
+    display: flex;
+    justify-content: space-around;
+}
+.form_confine_intervention
+{
+    display: flex;
+    justify-content: space-around; 
+    background-color: white;
+    padding: 15px;
+    border-radius: 20px;
+}
+.form_confine_testeur
+{
+   
+  
+    background-color: white;
+    border-radius: 20px;
+    padding: 15px;
+}
+
+.form_confine_testeur input[type=text]
+{
+    padding: 4px ;
+    width: 40%;
+    
+}
+
+.form_confine_autorisation input[type=text]
+{
+    width:90%; 
+    border:2px solid #aaa;
+    border-radius:4px;
+    margin:8px 0;
+    outline:none;
+    padding:8px;
+    box-sizing:border-box;
+    transition:.3s;
+    
+}
+
+.form_confine_surveillant input[type=text]
+{
+    width:90%; 
+    border:2px solid #aaa;
+    border-radius:4px;
+    margin:8px 0;
+    outline:none;
+    padding:8px;
+    box-sizing:border-box;
+    transition:.3s;
+       
+}
+
+.form_confine_cloture input[type=text]
+{
+
+    width:95%; 
+    border:2px solid #aaa;
+    border-radius:4px;
+    margin:8px 0;
+    outline:none;
+    padding:8px;
+    box-sizing:border-box;
+    transition:.3s;
+    
+}
+
+table
+{
+    text-align: center;
+    background-color: white;
+    padding: 15px;
+    
+    
+    width: 100%;
+
+}
+
+table,td,th 
+{
+    border: 1px solid ;
+   
+}
+
+th 
+{
+    height: 60px;
+}
+
+.btn_confine
+{
+    border: none;
+    background-color: blue;
+    padding: 10px 28px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 1px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 5px;
+   color: white;
+
+}
+
+.btn_confine:hover
+{
+    background-color:white;
+    color: black;
+}
+
+.from_registre_confine
+{
+    background-color: white;
+    width: 20%;
+    padding: 15px;
+    border-radius: 20px;
+}
+
+.form_confine_autorisation
+{
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    padding: 15px;
+    border-radius: 20px;
+}
+
+.from_incident_confine
+{
+    display: flex;
+    justify-content: space-around;
+    background-color: white;
+    border-radius: 20px;
+    padding: 15px;
+}
+
+
+.form_confine_alert input[type=text]
+{
+    width: 100%;
+    height: 50%;
+    text-align: none;
+}

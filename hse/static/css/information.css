@@ -1,0 +1,21 @@
+.box_info
+{
+border: groove;
+margin: 0 0 0 40px;
+padding: 20px;
+border-radius: 10px;
+background-color: rgb(255, 255, 255);
+padding-bottom: 12px;
+}
+
+.position_info
+{
+display : flex ;
+justify-content: space-between;
+align-items: center;
+}
+
+.image_info
+{
+margin-right: 10%;
+}

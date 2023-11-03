@@ -1,0 +1,17 @@
+{% extends "app/home_prest.html" %} 
+{% load static %}
+
+{% block content %}
+
+
+        <h1>PRESTATAIRE</h1>
+        <small>Base Documentaire / Prestataire</small>
+    
+        {% for doc in jovena %}
+        <div>
+            <p>{{ doc.info_prest }}</p>
+        </div>
+        {% endfor %}
+
+{% endblock %}
+

@@ -1,0 +1,18 @@
+{% extends "app/home_prest.html" %} 
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static '/css/check_list_confine.css' %}">
+<div class="">
+             
+        <div class="">
+            <h1>Prest Service</h1>
+            <small>Checklist Premis Feu Prest / Station Service</small>
+            <a href="{% url 'checklist_permis_feu_prest' %}"><button>Permis Feu</button></a>
+            <a href="{% url 'checklist_permis_excavation_prest' %}"><button>Permis Excavation</button></a>
+            <a href="{% url 'checklist_espace_confine_prest' %}"><button>Espace Confine</button></a>
+            <a href="{% url 'message_prest' %}"><button>Message</button></a>
+        </div>
+</div>
+
+{% endblock content %}

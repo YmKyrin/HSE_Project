@@ -1,0 +1,60 @@
+{% extends "app/home_prest.html" %} 
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+          <h1 class="text-center">SGHSSES-TMP-JOV-903.1</h1>
+          <h4 class="text-center">PERMIS DE FEU</h4> <br><br>
+            <div class="text-center">
+                <a href="{% url 'checklist_prest' %}"><button class="btn btn-info">Permis Feu</button></a>
+                <a href="{% url 'checklist_permis_excavation_prest' %}"><button class="btn btn-info">Permis Excavation</button></a>
+                <a href="{% url 'checklist_espace_confine_prest' %}"><button class="btn btn-info">Espace Confine</button></a>
+                <a href="{% url 'message_prest' %}"><button class="btn btn-outline-primary">Message</button></a>
+            </div>
+        
+          <br><br>
+          <div class="">
+            <div class="card-body">
+
+              <div class="card">
+                <h3 class="text-center">PERMIS FEU</h3>
+                {% for validation in validations %}
+                <div class="card" style="background-color: hsl(143, 88%, 86%);">
+                    <h5><strong>Votre permis a été envoyé avec succès</strong></h5><hr>
+                    <p><strong>Etat :</strong>&nbsp;{{ validation.validation }} </p>
+                    <p><strong>Nom d'utilisateur :</strong> {{ validation.user_profile_feu }}</p>
+                    <p><strong>Date Entete :</strong> {{ validation.date_entete }}</p>
+                </div>
+                {% endfor %}
+              </div>
+
+              <div class="card">
+                <h3 class="text-center">PERMIS EXCAVATION</h3>
+                {% for validation in validations3 %}
+                <div class="card" style="background-color: hsl(143, 88%, 86%);">
+                  <h5><strong>Votre permis a été envoyé avec succès</strong></h5><hr>
+                  <p><strong>Etat :</strong>&nbsp;{{ validation.validation }} </p>
+                  <p><strong>Nom d'utilisateur :</strong> {{ validation.user_profile_excavation }}</p>
+                  <p><strong>Date Entete :</strong> {{ validation.date_entete }}</p>
+                </div>
+                {% endfor %}
+              </div>
+              
+              <div class="card">
+                <h3 class="text-center">PERMIS ESPACE CONFINE</h3>
+                {% for validation in validations2 %}
+                <div class="card" style="background-color: hsl(143, 88%, 86%);">
+                  <h5><strong>Votre permis a été envoyé avec succès</strong></h5>
+                  <p><strong>Etat :</strong>&nbsp;{{ validation.validation }} </p>
+                  <p><strong>Nom d'utilisateur :</strong> {{ validation.user_profile_confine }}</p>
+                  <p><strong>Date Entete :</strong> {{ validation.date_entete }}</p>
+                </div>
+                {% endfor %}
+              </div>
+
+            </div>
+          </div>
+</div>
+
+{% endblock content %}

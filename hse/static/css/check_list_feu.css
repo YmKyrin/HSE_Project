@@ -1,0 +1,56 @@
+.form_site
+{
+    display: flex;
+    justify-content: space-around;
+   
+}
+
+.form_feu_site{
+    background-color: white;
+    padding: 15px;
+    border-radius: 20px;
+}
+
+.form_feu_date
+{
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    padding: 15px;
+    border-radius: 20px;
+}
+
+.form_feu_descriptif
+{
+    background-color: white;
+    padding: 15px;
+    border-radius: 20px;
+    
+}
+
+.form_feu_risque
+{
+    display: flex;
+    justify-content: space-around;
+    background-color: white;
+    padding: 15px;
+    border-radius: 20px;
+}
+
+.form_feu_travaux
+{
+    display: flex;
+    justify-content: space-around;
+    background-color: white;
+    padding: 15px;
+    border-radius: 20px;
+}
+
+.form_feu_securite
+{
+    display: flex;
+    justify-content: space-around; 
+    background-color: white;
+    padding: 15px;
+    border-radius: 20px;
+}

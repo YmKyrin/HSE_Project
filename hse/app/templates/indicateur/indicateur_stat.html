@@ -1,0 +1,41 @@
+{% extends "app/home_stat.html" %} 
+{% load static %}
+
+{% block content %}
+<div class="container my-5">         
+        <div class="text-center">
+            <h1 class="display-4">Illuminez votre entreprise grâce à la clarté des données</h3>
+        <br>
+        </div>
+        
+            <div class="row justify-content-center">
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="text-center">Graphique 1</h4>
+                            <img src="data:image/png;base64,{{ graphic1 }}" class="img-fluid" alt="Graphique 1">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="text-center">Graphique 2</h4>
+                            <img src="data:image/png;base64,{{ graphic2 }}" class="img-fluid" alt="Graphique 2">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        <br>
+        <div class="text-center my-4">
+            <div class="card">
+                <div class="card-body">
+                    <h4>Graphique 3</h4>
+                    <img src="data:image/png;base64,{{ graphic3 }}" class="img-fluid" alt="Graphique 3">
+                </div>
+            </div>
+        </div>
+</div>
+{% endblock %}

@@ -1,0 +1,665 @@
+{% extends "app/home_prest.html" %} 
+{% load static %}
+
+{% block content %}
+
+<div class="container">         
+    <div>
+        <h1 class="text-center">SGHSSES-TEMP-JOV-904.1</h1>
+        <h4 class="text-center">PERMIS D’ENTREE EN ESPACE CONFINE</h4> <br><br>
+        <div class="text-center">
+            <a href="{% url 'checklist_prest' %}"><button class="btn btn-info">Permis Feu</button></a>
+            <a href="{% url 'checklist_permis_excavation_prest' %}"><button class="btn btn-info">Permis Excavation</button></a>
+            <a href="{% url 'checklist_espace_confine_prest' %}"><button class="btn btn-info">Espace Confine</button></a>
+            <a href="{% url 'message_prest' %}"><button class="btn btn-outline-primary">Message</button></a>
+        </div>
+    </div>
+    <br>
+    <form action="" method="POST">
+        
+        {% csrf_token %}
+        <div class="card">
+                {% for message in messages %}
+                    <h4 id="messages">{{ message }}</h4>
+                {% endfor %}
+                <div class="card-body">
+                    <h4>Informations générales</h4>
+                    <div class="col-md-4 form-group">
+                        <label>Date</label>
+                        <input type="date" class="form-control" name="date_entete">
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <label>Registre</label>
+                        <input type="number" class="form-control" name="registre_entete">
+                    </div>
+                </div>
+            </div>
+               
+            
+            <div class="card">
+                <div class="card-body">
+                    <h4>1.DESCRIPTION DU TRAVAIL</h4>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <div class="">
+                                    <label for="">Site</label>
+                                    <input type="text" class="form-control" name="site">
+                                </div>
+                                <br>
+                                <div class="">
+                                    <label class="">Equipement</label>
+                                    <input type="text" class="form-control" name="equipement">
+                                </div>
+                                
+                            </div>
+                        </div>
+                    
+                        <div class="col-md-4">
+                            <div class="col-md-8 form-group">
+                                <div class="">
+                                    <label for="">Date de début</label>
+                                    <input type="date" class="form-control" name="date_debut">
+                                </div>
+                                <br>
+                                <div class="">
+                                    <label for="">Heure de début</label>
+                                    <input type="time" class="form-control" name="heure_debut">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="col-md-8 form-group">
+                                <div class="">
+                                    <label for="">Date de fin</label>
+                                    <input type="date" class="form-control" name="date_fin">
+                                </div>
+                                <br>
+                                <div class="">
+                                    <label for="">heure de fin</label>
+                                    <input type="time" class="form-control" name="heure_fin">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-7 form-group">
+                        <label for="">Entreprise intervenante</label>
+                        <input type="text" class="form-control" name="entreprise_intervenante">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">Descriptif du travail</label>
+                        <textarea type="text" class="form-control" name="descriptif_travail"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">2.Preparation de l'intervention</h4>
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <tr>
+                            <th></th>
+                            <th>Oui</th>
+                            <th>Non</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="">Consignation électrique:</label>
+                            </td>
+                            
+                            <td>
+                               
+                                <input type="radio" class="form-check-input" name="consignation_electique" value="oui">
+                            </td>
+                            
+                            <td>
+                                
+                                <input type="radio" class="form-check-input" name="consignation_electique" value="non">
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td>
+                                <label for="">Consignation fluidique:</label>
+                            </td>
+                            
+                            <td>
+                                
+                                <input type="radio" class="form-check-input" name="consignation_fluidique" value="oui">
+                            </td>
+                            
+                            <td>
+                               
+                                <input type="radio" class="form-check-input" name="consignation_fluidique" value="non">
+                            </td>
+                            
+                        </tr>
+                    
+                        <tr>
+                            <td>
+                                <label for="">Consignation mécanique:</label>
+                            </td>
+                            
+                            <td>
+                                
+                                <input type="radio" class="form-check-input" name="consignation_mecanique" value="oui">
+                            </td>
+                            
+                            <td>
+                               
+                                <input type="radio" class="form-check-input" name="consignation_mecanique" value="non">
+                            </td>
+                            
+                        </tr>
+                        
+                        <tr>
+                            <td>
+                                <label for="">Ventilation:</label>
+                            </td>
+                            
+                            <td>
+                               
+                                <input type="radio" class="form-check-input" name="ventilation" value="oui">
+                            </td>
+                            
+                            <td>
+                               
+                                <input type="radio" class="form-check-input" name="ventilation" value="non">
+                            </td>
+                            
+                        </tr>
+                    
+                        <tr>
+                            <td>
+                                <label for="">Ventilation forcée:</label>
+                            </td>
+                            
+                            <td>
+                               
+                                <input type="radio" class="form-check-input" name="ventilation_forcee" value="oui">
+                            </td>
+                            
+                            <td>
+                                
+                                <input type="radio" class="form-check-input" name="ventilation_forcee" value="non">
+                            </td>
+                            
+                        </tr>
+                        
+                        <tr>
+                            <td>
+                                <label for="">Plan d'urgence:</label>
+                            </td>
+                            
+                            <td>
+                                
+                                <input type="radio" class="form-check-input" name="plan_urgence" value="oui">
+                            </td>
+                            
+                            <td>
+                                
+                                <input type="radio" class="form-check-input" name="plan_urgence" value="non">
+                            </td>
+                            
+                        </tr>
+                    
+                        <tr>
+                            <td>
+                                <label for="">ASET:</label>
+                            </td>
+                            
+                            <td>
+                                
+                                <input type="radio" class="form-check-input" name="ASET" value="oui">
+                            </td>
+                            
+                            <td>
+                               
+                                <input type="radio" class="form-check-input" name="ASET" value="non">
+                            </td>
+                            
+                        </tr>
+                    </table>
+                        
+                        <label for="">Autre préparation à préciser</label>
+                    
+                        <input type="text" class="form-control" name="autre_intervention">
+                            
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">3.Equipement de securité</h4>
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <tr>
+
+                            <th></th>
+                            <th>Oui</th>
+                            <th>Non</th>
+                            <th>Type</th>
+                            
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="">Détecteur de gaz </label>
+                            </td>
+                            
+                            <td>
+                                <input type="radio" class="form-check-input" name="detecteur_gaz" value="oui">
+                            </td>
+                            <td>
+                                
+                                <input type="radio" class="form-check-input" name="detecteur_gaz" value="non">
+                            </td>
+                            
+                            
+                            <td>
+                                <input type="text" class="form-control" name="type_detecteur_gaz">
+                            </td>
+    
+                            
+                        </tr>
+                    
+                        <tr>
+                            <td>
+                                <label for="">appareil respiratoire autonome </label>
+                            </td>
+                            
+                            <td>
+                    
+                                <input type="radio" class="form-check-input" name="appareil_respiratoire_autonome" value="oui">
+                            </td>
+                            
+                            <td>
+                                
+                                <input type="radio" class="form-check-input" name="appareil_respiratoire_autonome" value="non">
+                            </td>
+                            
+                            <td>
+                                
+                                <input type="text" class="form-control" name="type_appareil_respiratoire_autonome" >
+                            </td>
+                            
+                        </tr>
+                        
+                        <tr>
+                            <td>
+                                <label for="">Appareil respiratoire isolant </label>
+                            </td>
+                            
+                            <td>
+                               
+                                <input type="radio" class="form-check-input" name="appareil_respiratoire_isolant" value="oui">
+                            </td>
+                            
+                            <td>
+                                
+                                <input type="radio" class="form-check-input" name="appareil_respiratoire_isolant" value="non">
+                            </td>
+                            
+                            <td>
+                                
+                                <input type="text" class="form-control" name="type_appareil_respiratoire_isolant" >
+                            </td>
+                            
+                        </tr>
+                    
+                        <tr>
+                            <td>
+                                <label for="">Masque filtrant </label>
+                            </td>
+                            
+                            <td>
+                                
+                                <input type="radio" class="form-check-input" name="masque" value="oui">
+                            </td>
+                            
+                            <td>
+                                
+                                <input type="radio" class="form-check-input" name="masque" value="non">
+                            </td>
+                            
+                            <td>
+                                
+                                <input type="text" class="form-control" name="type_masque" >
+                            </td>
+                            
+                        </tr>
+                    
+                        <tr>
+                            <td>
+                                <label for="">Harnais de sécurité </label>
+                            </td>
+                            
+                            <td>
+                                
+                                <input type="radio" class="form-check-input" name="harnais" value="oui">
+                            </td>
+                            
+                            <td>
+                                
+                                <input type="radio" class="form-check-input" name="type_harnais" value="non">
+                            </td>
+                            
+                            <td>
+                                
+                                <input type="text" class="form-control" name="type_harnais" >
+                            </td>
+                            
+                        </tr>
+                        
+                        <tr>
+                            <td>
+                                <label for="">Treuil et protection antichute </label>
+                            </td>
+                            
+                            <td>
+                                
+                                <input type="radio" class="form-check-input" name="treuil" value="oui">
+                            </td>
+                            
+                            <td>
+                                
+                                <input type="radio" class="form-check-input" name="treuil" value="non">
+                            </td>
+                            
+                            <td>
+                                
+                                <input type="text" class="form-control" name="type_treuil" >
+                            </td>
+                            
+                        </tr>
+                        
+                        <tr>
+                            <td>
+                                <label for="">Corde assurance </label>
+                            </td>
+                            
+                            <td>
+                                
+                                <input type="radio" class="form-check-input" name="corde_assurance" value="oui">
+                            </td>
+                            
+                            <td>
+                                
+                                <input type="radio" class="form-check-input" name="corde_assurance" value="non">
+                            </td>
+                            
+                            <td>
+                                
+                                <input type="text" class="form-control" name="type_corde_assurance" >
+                            </td>
+                            
+                        </tr>
+                    
+                        <tr>
+                            <td>
+                                <label for="">Panneaux de signalisation </label>
+                            </td>
+                            
+                            <td>
+                                
+                                <input type="radio" class="form-check-input" name="panneaux" value="oui">
+                            </td>
+                            
+                            <td>
+                                
+                                <input type="radio" class="form-check-input" name="panneaux" value="non">
+                            </td>
+                            
+                            <td>
+                                
+                                <input type="text" class="form-control" name="type_panneaux" >
+                            </td>
+                            
+                        </tr>
+                    
+                        <tr>
+                            <td>
+                                <label for="">Balisage de sécurité </label>
+                            </td>
+                            
+                            <td>
+                               
+                                <input type="radio" class="form-check-input" name="balisage" value="oui">
+                            </td>
+                            
+                            <td>
+                                
+                                <input type="radio" class="form-check-input" name="balisage" value="non">
+                            </td>
+                            
+                            <td>
+                                
+                                <input type="text" class="form-control" name="type_balisage" >
+                            </td>
+                            
+                        </tr>
+                        
+                    </table>
+                        
+                        <label for="">
+                            Moyen de communication surveillant et intervenant(s) à préciser:
+                        </label>
+                    
+                        <input type="text" class="form-control" name="moyen_intervenant" >
+                           
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">4.Qualite de l'air</h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped">
+                            <tr>
+                                <th>Substance</th>
+                                <th>Applicable</th>
+                                <th>Date</th>
+                                <th>Heure</th>
+                                <th>PPM/%</th>
+                                <th>Heure</th>
+                                <th>PPM/%</th>
+                                <th>Heure</th>
+                                <th>PPM/%</th>
+                                <th>Limite</th>
+                            </tr>
+                            <tr>
+                                <td>O2</td>
+                                <td><input type="checkbox" class="form-check-input" name="o2_applicable"></td>
+                                <td><input class="form-control" type="date" name="o2_date"></td>
+                                <td><input class="form-control" type="time" name="o2_heure1"></td>
+                                <td><input class="form-control" type="text" name="o2_PPM1" ></td>
+                                <td><input class="form-control" type="time" name="o2_heure2"></td>
+                                <td><input class="form-control" type="text" name="o2_PPM2" ></td>
+                                <td><input class="form-control" type="time" name="o2_heure3"></td>
+                                <td><input class="form-control" type="text" name="o2_PPM3" ></td>
+                                <td class="text-nowrap">19.5 - 21.5%</td>
+                            </tr>
+                            <tr>
+                                <td>%LIE</td>
+                                <td><input type="checkbox" class="form-check-input" name="LIE_applicable"></td>
+                                <td><input type="date" class="form-control" name="LIE_date"></td>
+                                <td><input type="time" class="form-control" name="LIE_heure1"></td>
+                                <td><input type="text" class="form-control" name="LIE_PPM1" ></td>
+                                <td><input type="time" class="form-control" name="LIE_heure2"></td>
+                                <td><input type="text" class="form-control" name="LIE_PPM2" ></td>
+                                <td><input type="time" class="form-control" name="LIE_heure3"></td>
+                                <td><input type="text" class="form-control" name="LIE_PPM3" ></td>
+                                <td class="text-nowrap">inferieur 5%</td>
+                            </tr>
+                            <tr>
+                                <td>CO</td>
+                                <td><input type="checkbox" class="form-check-input" name="Co_applicable"></td>
+                                <td><input type="date" class="form-control" name="Co_date"></td>
+                                <td><input type="time" class="form-control" name="Co_heure1"></td>
+                                <td><input type="text" class="form-control" name="Co_PPM1" ></td>
+                                <td><input type="time" class="form-control" name="Co_heure2"></td>
+                                <td><input type="text" class="form-control" name="Co_PPM2" ></td>
+                                <td><input type="time" class="form-control" name="Co_heure3"></td>
+                                <td><input type="text" class="form-control" name="Co_PPM3" ></td>
+                                <td class="text-nowrap">19.5 - 21.5%</td>
+                            </tr>
+                            <tr>
+                                <td>SO2</td>
+                                <td><input type="checkbox" class="form-check-input" name="SO_applicable"></td>
+                                <td><input type="date" class="form-control" name="SO_date"></td>
+                                <td><input type="time" class="form-control" name="SO_heure1"></td>
+                                <td><input type="text" class="form-control" name="SO_PPM1" ></td>
+                                <td><input type="time" class="form-control" name="SO_heure2"></td>
+                                <td><input type="text" class="form-control" name="SO_PPM2" ></td>
+                                <td><input type="time" class="form-control" name="SO_heure3"></td>
+                                <td><input type="text" class="form-control" name="SO_PPM3" ></td>
+                                <td class="text-nowrap">19.5 - 21.5%</td>
+                            </tr>
+                            <tr>
+                                <td>H2S</td>
+                                <td><input type="checkbox" class="form-check-input" name="H2S_applicable"></td>
+                                <td><input type="date" class="form-control" name="H2S_date"></td>
+                                <td><input type="time" class="form-control" name="H2S_heure1"></td>
+                                <td><input type="text" class="form-control" name="H2S_PPM1" ></td>
+                                <td><input type="time" class="form-control" name="H2S_heure2"></td>
+                                <td><input type="text" class="form-control" name="H2S_PPM2" ></td>
+                                <td><input type="time" class="form-control" name="H2S_heure3"></td>
+                                <td><input type="text" class="form-control" name="H2S_PPM3" ></td>
+                                <td class="text-nowrap">19.5 - 21.5%</td>
+                            </tr>
+                            <tr>
+                                <td>NH3</td>
+                                <td><input type="checkbox" class="form-check-input" name="NH3_applicable"></td>
+                                <td><input type="date" class="form-control" name="NH3_date"></td>
+                                <td><input type="time" class="form-control" name="NH3_heure1"></td>
+                                <td><input type="text" class="form-control" name="NH3_PPM1" ></td>
+                                <td><input type="time" class="form-control" name="NH3_heure2"></td>
+                                <td><input type="text" class="form-control" name="NH3_PPM2" ></td>
+                                <td><input type="time" class="form-control" name="NH3_heure3"></td>
+                                <td><input type="text" class="form-control" name="NH3_PPM3" ></td>
+                                <td class="text-nowrap">19.5 - 21.5%</td>
+                            </tr>
+                        </table>
+                        <div class="col-md-7 form-group">
+                            <label for="">Nom du testeur de gaz:</label>
+                            <textarea type="text" class="form-control" name="nom_testeur"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                
+            
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <strong>4.Autorisation(responsable jovena)</strong><br><br>
+                            <div class="">
+                                <label for="">Nom</label>
+                                <input type="text" class="form-control" name="nom_reponsable_jovena">
+                            </div>
+                            <br>
+                            <div class="">
+                                <label for="">Date/heure</label>
+                                <input type="datetime-local" class="form-control" name="date_heure1">
+                            </div>
+                        </div>
+                    
+                   
+                    
+                        <div class="col-md-4">
+                            <strong>5.Surveillant de l'espace confiné</strong><br><br>
+                            <div class="">
+                                <label for="">Nom</label>
+                                <input type="text" class="form-control" name="nom_surveillant">
+                            </div>
+                            <br>
+                            <div class="">
+                                <label for="">Date/heure</label>
+                                <input type="datetime-local" class="form-control" name="date_heure2">
+                            </div>
+                        </div>
+                    
+                        
+                    
+                        <div class="col-md-4">
+                            
+                            <strong>6.Cloture du permis(responsable intervenante)</strong>
+                            
+                            <div class="">
+                                <label for="">Nom</label>
+                                <input type="text" class="form-control" name="nom_cloture">
+                            </div>
+                            <br>
+                            <div class="">
+                                <label for="">Date/heure</label>
+                                <input type="datetime-local" class="form-control" name="date_heure3">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="col-md-7 form-group">
+                    <h4>ALERTE EN CAS D'INCIDENT</h4>
+                    <textarea type="text" class="form-control" name="alerte" id=""></textarea>
+                </div>
+            </div>
+            <div class="card">
+                <h4>NUMERO D'URGENCE</h4>
+                    <div class="custom-container">
+                        <div class="left-column">
+                            <div class="form-row">
+                                <div class="col-md-6 form-group">
+                                    Pompier: 
+                                    <input type="text" class="form-control" name="pompier" id="">
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    Ambulance: 
+                                    <input type="text" class="form-control" name="ambulance" id="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="right-column">
+                            <div class="form-row">
+                                <div class="col-md-6 form-group">
+                                    Responsable su site: 
+                                    <input type="text" class="form-control" name="responsable_site" id="">
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    Responsable Jovena 
+                                    <input type="text" class="form-control" name="responsable_jovena" id="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            
+            
+            <div class="card">
+                <div class="card-body">
+                    Permis de feu délivré le: &nbsp;&nbsp;
+                    <input type="date" class="" name="permi_delivre" id="">
+                    <input type="hidden" value="{{user}}" name="user_profile_confine">
+                    <input type="hidden" value="en_attente" name="validation"><br><br>
+
+                    <button type="submit" class="btn btn-success">Enregistrer</button>
+                    <br>
+            
+
+                {% for message in messages %}
+                    <h3 id="messages">{{ message }}</h3>
+                {% endfor %}
+
+                </div>
+            </div>
+        </form>
+</div>
+
+{% endblock content %}

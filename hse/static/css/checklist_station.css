@@ -1,0 +1,157 @@
+.form_diagnostic 
+{
+    display: flex;
+    justify-content:space-around;
+    background-color: white;
+    border-radius: 20px;
+    padding:2% 2% 2% 2% ;
+}
+
+h1
+{
+    text-align: center;
+}
+
+h2
+{
+    text-align: center;
+}
+
+ h3
+{
+    text-align: center;
+    
+}
+
+.h3_form
+{
+    text-align: left;
+}
+
+.form_diagnostic1  input[type=text]{
+    width:50%; 
+    border:2px solid #aaa;
+    border-radius:4px;
+    margin:8px 0;
+    outline:none;
+    padding:8px;
+    box-sizing:border-box;
+    transition:.3s;
+  }
+  
+  input[type=text]:focus{
+    border-color:dodgerBlue;
+    box-shadow:0 0 8px 0 dodgerBlue;
+  }
+
+.prevention
+{
+    display: flex;
+    justify-content: space-between;
+}
+
+.prevention1
+{
+    background-color: white;
+    padding: 20px 20px 20px 20px;
+    border-radius: 20px;
+}
+
+
+
+.prevention1 input[type = text]
+{
+    width:100%; 
+    border:2px solid #aaa;
+    border-radius:4px;
+    margin:8px 0;
+    outline:none;
+    padding:8px;
+    box-sizing:border-box;
+    transition:.3s;
+}
+
+.garcon_img
+{
+    padding-right: 10%;
+}
+
+.mesure
+{
+    display: flex;
+    justify-content: space-around;
+    background-color: white;
+    padding-top: 20px;
+    border-radius: 20px;
+}
+  
+.form_nature
+{
+    display: flex;
+    justify-content: space-around;
+    background-color: white;
+    border-radius: 50px 50px 50px 50px;
+}
+
+
+.form_nature1
+{
+    background-color: white;
+    padding: 30px 50px 30px 30px;
+    
+}
+
+.form_nature2
+{
+    background-color: white;
+    padding: 30px 30px 30px 40px;
+    border-radius: 20px;
+}
+
+.form_nature3
+{
+    background-color: white;
+    padding: 30px;
+    border-radius: 20px;
+}
+
+.form_nature input[type = text]
+{
+    width:100%; 
+    border:2px solid #aaa;
+    border-radius:4px;
+    margin:8px 0;
+    outline:none;
+    padding:8px;
+    box-sizing:border-box;
+    transition:.3s;
+}
+
+.checkbox1
+{
+    display: flex ; 
+    justify-content: space-between;
+}
+
+#customers {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+#customers td, #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+  
+#customers tr:hover {background-color: #ddd;}
+  
+#customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04AA6D;
+    color: white;
+  }

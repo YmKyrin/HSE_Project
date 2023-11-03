@@ -1,0 +1,123 @@
+.form_excavation
+{
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    padding: 15px;
+    border-radius: 20px;
+}
+
+.form_obstruction
+{
+    background-color: white;
+    padding: 15px;
+    border-radius: 20px;
+}
+.form_desciption
+{
+    background-color: white;
+    padding: 15px;
+    border-radius: 20px;
+}
+
+.form_consideration
+{
+    background-color: white;
+    padding: 15px;
+    border-radius: 20px;
+}
+
+.form_excavations
+{
+    background-color: white;
+    padding: 15px;
+    border-radius: 20px;
+}
+
+.form_dessin
+{
+    display: flex;
+    justify-content: space-between;
+}
+
+.form_detection
+{
+    background-color: white;
+    padding: 15px;
+    border-radius: 20px;
+}
+
+.form_approbation
+{
+    background-color: white;
+    padding: 15px;
+    border-radius: 20px;
+    
+}
+
+.form_profondeur
+{
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    padding: 15px;
+    border-radius: 20px;
+}
+
+.form_type
+{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.form_eau{
+    display: flex;
+    justify-content: space-between;
+}
+
+.form_egout
+{
+    display: flex;
+    justify-content: space-between;
+}
+
+.form_cable
+{
+    display: flex;
+    justify-content: space-between;
+}
+
+.form_terre
+{
+    display: flex;
+    justify-content: space-between;
+}
+
+.form_structure
+{
+    display: flex;
+    justify-content: space-between;
+}
+
+.form_electrique
+{
+    display: flex;
+    justify-content: space-between;
+}
+
+.form_pente
+{
+    display: flex;
+    justify-content: space-between;
+}
+
+.form_protection
+{
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    padding: 15px;
+    border-radius: 20px;
+}
+

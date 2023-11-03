@@ -1,0 +1,557 @@
+{% extends "app/home_prest.html" %} 
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+                <h1 class="text-center">SGHSSES-PRO-JOV—905.1</h1>
+                <h4 class="text-center">PERMIS D’ EXCAVATION</h4> <br><br>
+                <div class="text-center">
+                    <a href="{% url 'checklist_prest' %}"><button class="btn btn-info">Permis Feu</button></a>
+                    <a href="{% url 'checklist_permis_excavation_prest' %}"><button class="btn btn-info">Permis Excavation</button></a>
+                    <a href="{% url 'checklist_espace_confine_prest' %}"><button class="btn btn-info">Espace Confine</button></a>
+                    <a href="{% url 'message_prest' %}"><button class="btn btn-outline-primary">Message</button></a>
+                </div>
+                <br>
+                
+                <form action="" method="POST">
+                    <div class="">
+                        {% csrf_token %}
+                        <div class="card">
+                        {% for message in messages %}
+                            <h4 id="messages">{{ message }}</h4>
+                        {% endfor %}
+                        <div class="card-body">
+                            <h4>Informations générales</h4>
+                                <div class="col-md-4 form-group">
+                                    <label>Date:</label>
+                                    <input type="date" class="form-control" name="date_entete">
+                                </div>
+                                <div class="col-md-4 form-group">
+                                    <label>Registre:</label>
+                                    <input type="number" class="form-control" name="Registre_entete">
+                                </div>
+                                <br>
+                                <h4>Site et Client</h4>
+                                <div class="custom-container">
+                                    <div class="left-column">
+                                        <div class="form-row">
+                                            <div class="col-md-6 form-group">
+                                                <label>Site:</label>
+                                                <input type="text" class="form-control" name="site">
+                                            </div>
+                                            <div class="col-md-6 form-group">
+                                                <label>Client:</label>
+                                                <input type="text" class="form-control" name="client">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="right-column">
+                                        <div class="form-row">
+                                            <div class="col-md-6 form-group">
+                                                <label>Localité:</label>
+                                                <input type="text" class="form-control" name="localite">
+                                            </div>
+                                            <div class="col-md-6 form-group">
+                                                <label>Entreprise intervenante:</label>
+                                                <input type="text" class="form-control" name="entreprise_intervenante">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br>
+                                <h4>Descriptif du travail</h4>
+                                <div class="form-group">
+                                    <label>Description:</label>
+                                    <textarea type="text" class="form-control" rows="4" name="descriptif"></textarea>
+                                </div>
+                        </div>
+                    </div>
+        
+        
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="custom-container">
+                                <div class="left-column">
+                                    <div class="col-md-7 form-group">
+                                        <label for="">Profondeur et longueur de l'excavation</label>
+                                        <input type="text" class="form-control" name="profondeur_excavation">
+                                    </div>
+                                </div>
+                            
+                                <div class="left-column">
+                                    <div class="col-md-7 form-group">
+                                        <label for="">Zone</label>
+                                        <input type="text" class="form-control" name="zone">
+                                    </div>  
+                                </div>
+                            </div>
+                
+                            <div class="">
+                                <div class="form-group form-inline">
+                                    <strong><label  class="mr-2" for="">Type d'excavation :</label></strong> &nbsp;&nbsp;
+                                    <label class="form-check-label mr-2" for="mecanique">Mécanique</label>
+                                    <input type="radio" class="form-check-input" name="type_excavation" value="mecanique">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                                    <label class="form-check-label " for="manuelle">Manuelle</label>
+                                    <input type="radio" class="form-check-input" name="type_excavation" value="manuelle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    
+                                    <label class="form-check-label" for="autre">Autre à préciser</label>
+                                    <input type="radio" class="form-check-input" name="type_excavation" value="autre">
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-8 form-group">
+                                <div class=""><label class="h5">liste de dessin :</label></div>
+                                <div class=""><input type="text" class="form-control" name="dessin1"></div><br>
+                                <div class=""><input type="text" class="form-control" name="dessin2"></div><br>
+                                <div class=""><input type="text" class="form-control" name="dessin3"></div><br>
+                                <div class=""><input type="text" class="form-control" name="dessin4"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-body">
+                            <h4>OBSTRUCTION SOUTERRAINES</h4>
+                            <br>
+                            <table class="table">
+                                <tr>
+                                    <td><strong>Ligne d'eau</strong></td>
+                                    <td>
+                                        <div class="form-check">
+                                            <label class="form-check-label">
+                                                <input type="checkbox" class="form-check-input" name="eau_incendie"> Eau d'incendie
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-check">
+                                            <label class="form-check-label">
+                                                <input type="checkbox" class="form-check-input" name="eau_riviere"> Eau de rivière
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-check">
+                                            <label class="form-check-label">
+                                                <input type="checkbox" class="form-check-input" name="eau_domestique"> Eau domestique
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td>
+                        
+                                        <input type="text" class="form-control" name="commentaire_obstruction1" placeholder="Commentaire">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Egout</strong></td>
+                                    <td>
+                                        <div class="form-check">
+                                            <label class="form-check-label">
+                                                <input type="checkbox" class="form-check-input" name="eau_pluviale"> Eaux pluviales
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-check">
+                                            <label class="form-check-label">
+                                                <input type="checkbox" class="form-check-input" name="effluent"> Effluents
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-check">
+                                            <label class="form-check-label">
+                                                <input type="checkbox" class="form-check-input" name="sanitaire"> Sanitaire
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control" name="commentaire_obstruction2" placeholder="Commentaire">
+                                    </td>
+                                </tr>
+                            </table>
+                        
+                            <table class="table">
+                                <tr>
+                                    <td>
+                                        <div class="form-check">
+                                            <label class="form-check-label" for="cable_com">
+                                            <input type="checkbox" class="form-check-input" name="cable_communication">Câble de communication
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-check">
+                                            <label class="form-check-label" for="cable_cath">
+                                            <input type="checkbox" class="form-check-input" name="cable_cathodique">Câble cathodique
+                                            </label>
+                                        </div>
+                                    </td>
+            
+                                    <td>
+                                        <div class="form-check">
+                                            <label for="" class="form-check-label">
+                                            <input type="text" class="form-control" name="commentaire_obstruction3" placeholder="Commentaire">
+                                            </label>
+                                        </div>
+                                    </td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="form-check">
+                                            <label class="form-check-label" for="">
+                                            <input type="checkbox" class="form-check-input" name="mise_terre">Mise a la terre
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-check">
+                                            <label class="form-check-label" for="">
+                                            <input type="checkbox" class="form-check-input" name="ligne_gaz">Ligne de gaz
+                                            </label>
+                                        </div>
+                                    </td>
+                                
+                                    <td>
+                                        <div class="form-check">
+                                            <label class="form-check-label" for="">
+                                            <input type="text" class="form-control" name="commentaire_obstruction4" placeholder="commentaire">
+                                            </label>
+                                        </div>
+                                    </td>
+                                </tr>
+                            
+                                <tr>
+                                    <td>
+                                        <div class="form-check">
+                                            <label class="form-check-label">
+                                            <input type="checkbox" class="form-check-input" name="structure_adjacente">Structure adjacente
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-check">
+                                            <label class="form-check-label">
+                                            <input type="text" class="form-control" name="atre_obstruction" placeholder="Autre à préciser">
+                                            </label>
+                                        </div>
+                                    </td> 
+                
+                                    <td>
+                                        <div class="form-check">
+                                            <label class="form-check-label">
+                                            <input type="text" class="form-control" name="commentaire_obstruction5" placeholder="commentaire">
+                                            </label>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                    
+                            <table class="table">
+                                <tr>
+                                    <td>
+                                        <label><strong>Electrique</strong></label>
+                                    </td>
+
+                                    <td>
+                                        <div class="form-check">
+                                            <label for="">11 Kv</label>
+                                            <input type="checkbox" class="form-check-input" name="electrique_11kv">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-check">
+                                            <label for="">6.6 Kv</label>
+                                            <input type="checkbox" class="form-check-input" name="electrique_6kv">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-check">
+                                            <label for="">690 V</label>
+                                            <input type="checkbox" class="form-check-input" name="electrique_690v">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-check">
+                                            <label for="">< 690 V</label>
+                                            <input type="checkbox" class="form-check-input" name="electrique_690i">
+                                        </div>
+                                    </td>
+
+                                    <td>
+                                        <div class="form-check">
+                                            <label for="">
+                                            <input type="text" class="form-control" name="commentaire_obstruction6" placeholder="Commentaire">
+                                            </label>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+        
+                    <div class="card">
+                        <div class="card-body">
+                        <h4>Considérations spécifiques</h4><br>
+            
+                            <table class="table">
+                                <tr>
+                                    <td>
+                                        <div class="form-check">
+                                            <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox" name="pente">Pente
+                                            </label>
+                                        </div>
+                                    </td>
+                    
+                                    <td>
+                                        <div class="form-check">
+                                            <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox" name="banc">Banc
+                                            </label>
+                                        </div>
+                                    </td>
+                    
+                                    <td>
+                                        <div class="form-check">
+                                            <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox" name="etayage">Etayage
+                                            </label>
+                                        </div>
+                                    </td>
+                    
+                                    <td>
+                                        <div class="form-check">
+                                            <label class="form-check-label" for="">
+                                            <input class="form-control" type="text" name="commentaire1" placeholder="Commentaire">
+                                            </label>
+                                        </div>
+                                    </td>
+                                </tr>
+                                
+                
+                            </table>
+                        
+                            <table class="table">
+                                <tr>
+                                    <td>
+                                        <div class="form-check">
+                                            <label class="form-check-label">
+                                            <input type="checkbox" class="form-check-input" name="pretection_nuit">Protection nuit
+                                            </label>
+                                        </div>
+                                    <td>
+                                        <div class="form-check">
+                                            <label class="form-check-label" for="">
+                                            <input type="checkbox" class="form-check-input" name="pretection_ouverture">Protection des ouvertures (Barricade)
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-check">
+                                            <label class="form-check-label" for="">
+                                            <input type="text" class="form-control" name="commentaire2" placeholder="Commentaire">
+                                            </label>
+                                        </div>
+                                    </td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="form-check">
+                                            <label class="form-check-label" for="permis">
+                                            <input type="checkbox" class="form-check-input" name="permis_espace">Permis d'entée en espace confine
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-check">
+                                            <label class="form-check-label" for="pompage">
+                                            <input type="checkbox" class="form-check-input" name="pompage_eau">Pompage d'eau
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-check">
+                                            <label class="form-check-label" for="">
+                                            <input type="text" class="form-control" name="commentaire3" placeholder="Commentaire">
+                                            </label>
+                                        </div>  
+                                    </td>                  
+                                </tr>
+                            </table>
+                    
+                            <table class="table">
+                                <tr>
+                                    <td>
+                                        <div class="form-check">
+                                            <label for="femeture">
+                                            <input type="checkbox" class="form-check-input" name="fermeture_route">Fermeture de route
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-check">
+                                            <label for="">
+                                            <input type="text" class="form-control" name="commentaire4" placeholder="Commentaire">
+                                            </label>    
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                            <div class="col-md-6 form-group">
+                                <label class="">Mesure de sécurité additionnelle</label>
+                                <input type="text" class="form-control" name="mesure_securite_additionnel">
+                            </div>
+                        </div>
+                    </div>
+        
+                
+                    <div class="card">
+                        <div class="card-body">
+                            <h4>Détection des Structures et Services Non-Apparents</h4>
+                            <br>
+                            <div class="form-row">
+                                <div class="custom-container">
+                                    <div class="left-column">
+                                        <div class="form-check col">
+                                            <label class="form-check-label">
+                                            <input type="checkbox" class="form-check-input" name="effectuee">Effectuéé
+                                            </label>
+                        
+                                        </div>
+                                        <div class="col">
+                                            <label for="">Nom</label>
+                                            <input type="text" class="form-control" name="effectuer_nom">
+                                        </div>
+                                        <div class="col">              
+                                            <label for="">Date</label>
+                                            <input type="date" class="form-control" name="effectuer_date">
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="right-column">
+                                        <div class="form-check col">
+                                            <label class="form-check-label">
+                                            <input type="checkbox" class="form-check-input" name="representant_contracant">Representant / Contractant
+                                            </label>
+                                        </div>
+                                        <div class="col">
+                                            <label for="">Nom</label>
+                                            <input type="text" class="form-control" name="representant_contracant_nom" "">
+                                        </div>
+                                        <div class="col">
+                                            <label for="">Date</label>
+                                            <input type="date" class="form-control" name="representant_contracant_date" "">
+                                        </div>       
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="card">
+                        <div class="card-body">
+                            <h4>approbation</h4>
+                            <br>
+                            <div class="custom-container">
+                                <div class="left-column">
+                                    <div class="">
+                                    <h6>SUPERVISEUR DES DESSINATEURS</h6>
+                                    </div>
+                                    <div class="">
+                                        <label for="">Nom</label>
+                                        <input type="text" class="form-control" name="superviseur_nom">
+                                    </div>
+                                    <div class="">              
+                                        <label for="">Date</label>
+                                        <input type="date" class="form-control" name="superviseur_date">
+                                    </div>
+                                    
+                                </div>
+                                
+                                <div class="right-column">
+                                    <div class="">
+                                        <h6>REPRESENTANT DU PROPRIETAIRE</h6>
+                                    </div>
+                                    <div class="">
+                                        <label for="">Nom</label>
+                                        <input type="text" class="form-control" name="representant_proprietaire_nom">
+                                    </div>
+                                    <div class="">              
+                                        <label for="">Date</label>
+                                        <input type="date" class="form-control" name="representant_proprietaire_date">
+                                    </div>                
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="card">
+                        <div class="card-body">
+                            <p class="">JE COMPRENDS LA NATURE ET L'ETENDUE DES TRAVAUX ET JE ME CONFORMERAI A TOUTES LES CONDITIONS ET LES PRECAUTIONS A SUIVRE POUR ACHEVER LE TRAVAIL.</p>
+                            <hr>
+                            <div class="col-md-6 form-group">
+                                
+                                <div class="">
+                                    <label for="">SUPERVISEUR D'EXCAVATION</label>
+                                </div>
+                                <div class="">
+                                    <label for="">Nom</label>
+                                    <input type="text" class="form-control" name="superviseur_excavation_nom">
+                        
+                                </div>
+                                <div class="">
+                                    <label for="">Date</label>
+                                    <input type="date" class="form-control" name="superviseur_excavation_date">
+                                </div>            
+                            </div>
+                        </div>
+                    </div>
+            
+                    <div class="card">
+                        <div class="card-body">
+                            <small>A LA FIN DES TRAVAUX, LE SUPERVISEUR D'EXCAVATION SIGNERA EN DESSOUS ET INDIQUERA LA DATE D'ACHEVEMENT DES TRAVAUX PUIS ENVERRA AU SUPERVISEUR DES DESSINATEURS ACCOMPAGNES DES DESSINS TOUTES MODIFICATIONS/ADDITIONS OU SUPPRESSIONS.</small>
+                            <hr>
+                            <div class="col-md-6 form-group">
+                                <div class="">
+                                    <label for="">SUPERVISEUR D'EXCAVATION</label>
+                                </div><br>
+                                <div class="">
+                                    <label for="">Date d'achevement des travaux d'excavation</label>
+                                    <input type="date" class="form-control" name="date_achevement_excavation">
+                                </div>
+                                <div class=""></div>          
+                            </div>       
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-body">
+                            Permis de feu délivré le: &nbsp;&nbsp;
+                            
+                                <input type="date" class="" name="permis_excavation_delivre">
+                            
+                            <input type="hidden" value="{{user}}" name="user_profile_excavation">
+                            <input type="hidden" value="en_attente" name="validation"><br><br>
+
+                            <button type="submit" class="btn btn-success">Enregistrer</button>
+                            <br>
+                    
+
+                            {% for message in messages %}
+                                <h3 id="messages">{{ message }}</h3>
+                            {% endfor %}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock content %}

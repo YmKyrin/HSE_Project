@@ -1,0 +1,25 @@
+.container {
+    width: 400px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.form-container {
+    display: flex;
+    width: 1100%; /* 11 pages à 100% de largeur chacune */
+}
+
+.form {
+    width: 9.09%; /* 100% / 11 pages = 9.09% par page */
+    float: left;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.backBtn{
+    transition-duration: 0.4s;
+}
+.backBtn:hover{
+    background-color: #4CAF50; /* Green */
+    color: white;
+}

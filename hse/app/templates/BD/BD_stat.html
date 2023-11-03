@@ -1,0 +1,17 @@
+{% extends "app/home_stat.html" %} 
+{% load static %}
+
+{% block content %}
+
+
+        <h1>STATION SERVICE</h1>
+        <small>Base Documentaire / Station Service</small>
+    
+        {% for doc in jovena %}
+        <div>
+            <p>{{ doc.info_stat }}</p>
+        </div>
+        {% endfor %}
+
+{% endblock %}
+

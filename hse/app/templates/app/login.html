@@ -1,0 +1,33 @@
+{%extends 'app/main.html'%}
+{%load static %}
+
+{%block content%}
+<body>
+    <div class="center">
+        <h1>Login</h1>
+        <form action="" method="POST">
+            {%csrf_token %}
+            <div class="txt_field">
+                <input type="text" name="username" required>
+                <span></span>
+                <label for="">nom d'utilisateur </label>
+            </div>
+            <div class="txt_field">
+                <input type="password" name="password" required >
+                <span></span>
+                <label for="">Mots de passe</label>
+            </div>
+            <div class="pass">mots de passe oublié</div>
+                <input type="submit" value="Login">
+            <div class="signup_link">
+            </div>
+
+            {% for message in messages %}
+            <p id="messages">{{ message }}</p>
+            {% endfor %}
+            
+        </form>
+    </div>
+</body>
+{%endblock %}
+
