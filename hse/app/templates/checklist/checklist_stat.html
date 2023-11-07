@@ -1,527 +1,499 @@
-{% extends "app/home_prest.html" %} 
+{% extends "app/home_stat.html" %}
 {% load static %}
 
 {% block content %}
-<div class="">        
-        <div class="">
-            <div class="">
-                <h1 class="">ITM/FORMDIAPPJ/V2.00</h1> <br>
-            </div>
-                <h2>FORMULAIRE DE DIAGNOSTIC ET DE PLAN DE PREVENTION JOURNALIER</h2><br> <br>
+<div class="container">        
+
+            <h1 class="text-center">ITM/FORMDIAPPJ/V2.00</h1>
+            <h4 class="text-center">FORMULAIRE DE DIAGNOSTIC ET DE PLAN DE PREVENTION JOURNALIER</h4><hr>
             
-                
-            <h3>A- DIAGNOSTIC</h3>
-            <form action="" method="POST">
-                {% csrf_token %}
-                  <br>
-                <div class="form_diagnostic">
-                   
+            
+        <div class="card">
+            <div class="card-body">
+                {% for message in messages %}
+                <h3 id="messages">{{ message }}</h3>
+                {% endfor %}
+                <h4><strong>A- DIAGNOSTIC</h4></strong>
+                <form action="" method="POST">
+                    {% csrf_token %}
                     
-
-                    <div class="form_diagnostic1">
+                    <div class="custom-container">
+                        <div class="left-column">
+                            <div class="form-row">
+                                <div class="col-md-6 form-group">   
+                                    <label for="num_reclamation">Numero de reclamation:</label> 
+                                    <input type="number" name="num_reclamation" class="form-control" required>
+                                </div>
+                            
+                                <div class="col-md-6 form-group"> 
+                                    <label for="site">Site:</label> 
+                                    <input type="text" name="site" class="form-control" required>
+                                </div>
                         
+                                <div class="col-md-6 form-group"> 
+                                    <label for="client">Client:</label> 
+                                    <input type="text" name="client" class="form-control" required>
+                                </div>
+                                    
+                                <div class="col-md-6 form-group"> 
+                                    <label for="localite">Localité:</label>
+                                    <input type="text" name="localite" class="form-control" required>
+                                </div>
+
+                                <div class="col-md-6 form-group"> 
+                                    <label for="panne_reel">panne reel:</label>
+                                    <textarea type="text" name="panne_reel" class="form-control" required></textarea>
+                                </div>
+
+                                <div class="col-md-6 form-group"> 
+                                    <label for="date_diagnostic">Date de diagnostic:</label>
+                                    <input type="date" name="date_diagnostic" class="form-control">
+                                </div>
+
+                                
+                            </div>
+                        </div>
+
+                        <div class="right-column">
+                            <div class="form-row">
                             
-                        <label for="num_reclamation">Numero de reclamation:</label> 
-                        <input type="text" name="num_reclamation" required> <br> <br>
-                                            
-                        <label for="panne_annoncee">Panne Annoncée:</label>
-                        <input type="text" name="panne_annoncee" required> <br> <br> 
-                    
-                        <label for="site">Site:</label> 
-                        <input type="text" name="site" required><br> <br>
-                
-                        <label for="client">Client:</label> 
-                        <input type="text" name="client" required> <br> <br>
-
-                    </div>
-
-                    <div class="form_diagnostic1">  
+                                <div class="col-md-6 form-group"> 
+                                    <label for="entreprise_intervenante">Entreprise intervenante:</label> 
+                                    <input type="text" name="entreprise_intervenante" class="form-control" required>
+                                </div>
                             
-                        <label for="localite">Localité:</label>
-                        <input type="text" name="localite" required><br> <br>
-                   
-                        <label for="entreprise_intervenante">Entreprise intervenante:</label> 
-                        <input type="text" name="entreprise_intervenante" required><br> <br> 
-                    
-                        <label for="categorie_reclamation">Categorie de réclamation:</label>
-                        <input type="text" name="categorie_reclamation" required> <br> <br>
-                    
-                        <label for="echeance">Echeance:</label>
-                        <input type="date" name="echeance" required><br> <br>
-                    
-                    </div>
+                                <div class="col-md-6 form-group"> 
+                                    <label for="categorie_reclamation">Categorie de réclamation:</label>
+                                    <input type="text" name="categorie_reclamation" class="form-control" required>
+                                </div>
 
-                    <div class="form_diagnostic1">
+                                <div class="col-md-6 form-group"> 
+                                    <label for="interlocuteur">Interlocuteur:</label>
+                                    <input type="text" name="interlocuteur" class="form-control" required>
+                                </div>
+    
+                                <div class="col-md-6 form-group"> 
+                                    <label for="fonction">fonction:</label>
+                                    <input type="text" name="fonction" class="form-control" required>
+                                </div>
+                            
+                                <div class="col-md-6 form-group"> 
+                                    <label for="panne_annoncee">Panne Annoncée:</label>
+                                    <textarea type="text" name="panne_annoncee" class="form-control" required></textarea>
+                                </div>
 
-                        <label for="interlocuteur">Interlocuteur:</label>
-                        <input type="text" name="interlocuteur" required><br> <br>
-
-                        <label for="fonction">fonction:</label>
-                        <input type="text" name="fonction" required><br> <br>
-
-                        <label for="panne_reel">panne reel:</label>
-                        <input type="text" name="panne_reel" required><br> <br>
-
-                        <label for="date_diagnostic">Date de diagnostic:</label>
-                        <input type="date" name="date_diagnostic" ><br> <br>
-
-                    </div>        
-
-
+                                <div class="col-md-6 form-group"> 
+                                    <label for="echeance">Echeance:</label>
+                                    <input type="date" name="echeance" class="form-control" required>
+                                </div>
+                               
+                            </div>
+                        </div>
+                    </div>                  
                 </div>
-                    
-                       
-              <!-- fin fin fin fin fin fin fin fin fin fin fin fin fin  -->
+            </div>
+                <!-- fin fin fin fin fin fin fin fin fin fin fin fin fin  -->
 
-              <!-- prevention prevention prevention prevention prevention prevention -->
+                <!-- prevention prevention prevention prevention prevention prevention -->
+            <div class="card">
+                <h4><strong>B- PLAN DE PREVENTION HSE</strong></h4>
+                
+                <h5 class=""><strong>B-1 RISQUE D'INTERFERENCE AVEC L'INTERVENTION</strong></h5>
+                <div class="">
 
-
-
-                <br>
-                <h1>B- PLAN DE PREVENTION HSE</h1>
-                <br>
-                <h3 class="h3_form">B-1 RISQUE D'INTERFERENCE AVEC L'INTERVENTION</h3>
-                <br>
-                <div class="prevention">
-                    <div class="prevention1">
-
+                    <div class="col-md-6 form-group">
                         <label for="">Livraison de carburant (dépotage) prévue à: </label> 
-                        <input type="datetime-local" name="livraison_carburant" id=""> <br> <br>
+                        <input type="datetime-local" class="form-control" name="livraison_carburant" id="">
+                    </div>
 
-                        <label for="">Présence dans la zone de travail de: Bouteilles de Gaz, Futs</label><br>
-                        <input type="text" name="presence_zone" id=""> <br>
+                    <div class="col-md-6 form-group">
+                        <label for="">Présence dans la zone de travail de: Bouteilles de Gaz, Futs</label>
+                        <input type="text" class="form-control" name="presence_zone" id="">
+                    </div>
                         
-                        <label for="">Autres trvaux prévus ce jour: </label><br>
-                        <input type="text" name="autre_travaux" id=""><br>
-
+                        <div class="col-md-6 form-group">
+                        <label for="">Autres trvaux prévus ce jour: </label>
+                        <input type="text" class="form-control" name="autre_travaux" id="">
                     </div>
-                    
-                    <div class="garcon_img">
-                        <img src="{%static 'images/petit_garcon.png' %}" width="450" height="350" alt="">   
-                    </div>
-                  
-                <!-- fin fin fin fin fin fin fin fin fin fin -->
-
-
-                <!-- mesure mesure mesure mesure mesure messure mesure -->
-
                 </div>
+            </div>
                 
-                <br>
-                <h3><strong>B-2 MESURES DE SECURITE  OBLIGATOIRES</strong></h3><br>
-                <div class="mesure">
+            <div class="card">
+                <h5><strong>B-2 MESURES DE SECURITE  OBLIGATOIRES</strong></h5>
+                <div class="">
                     <div class="">
                         
-                        
-                        <input type="checkbox" name="permis_specifique" id="">
+                        <input type="checkbox" name="permis_specifique" class="form-check-input" id="">
                         <label for="permis_specifique">
                             Permis specifique pour les travaux a chaud et entree en espace confine
                         </label><br>
         
-                        <input type="checkbox" name="information_personnel" id="">
+                        <input type="checkbox" name="information_personnel" class="form-check-input" id="">
                         <label for="information_personnel">
                             Information du personnel et visiteurs presents sur le lieu d'intervention
                         </label><br>
         
-                        <input type="checkbox" name="port_EPI" id="">
+                        <input type="checkbox" name="port_EPI" class="form-check-input" id="">
                         <label for="port_EPI">
                             Port EPI de base (casque, lunettes, chaussures de securite, habits a bande reflechissante)
                         </label><br>
-                    </div>
     
-                   <div class="">
-    
-                        <input type="checkbox" name="balisage_perimetre" id="">
+                        <input type="checkbox" name="balisage_perimetre" class="form-check-input" id="">
                         <label for="balisage_perimetre">
                             Balisage du perimetre de securite du lieu d'intervention
                         </label><br>
     
-                        <input type="checkbox" name="extincteur_adapte">
+                        <input type="checkbox" name="extincteur_adapte" class="form-check-input">
                         <label for="">
                             Extincteurs adaptés
                         </label><br>
     
-                        <input type="checkbox" name="interdiction_de_fumer" id="">
-                        <label for="interdiction_de_fumer">Interdiction de fumer et de télephoner dans les zones à risque</label>
-                        <br><br>
+                        <input type="checkbox" name="interdiction_de_fumer" class="form-check-input" id="">
+                        <label for="interdiction_de_fumer">
+                            Interdiction de fumer et de télephoner dans les zones à risque
+                        </label><br>
+                        
     
                    </div>
                 </div>
-                
+            </div>
 
-                
 
-                <!-- fin fin fin fin fin fin fin fin fin fin fin fin fin  -->
-
-                <!-- nature nature nature nature travail travail travail travail -->
-                <br> <br>
-
-                <div class="form_nature">
-                    
-                    <div class="form_nature1">
-                        <h2>B-3 NATURE DU TRAVAIL</h2><br>
-                        <table id="customers">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                        <h5 class=""><strong>B-3 NATURE DU TRAVAIL</strong></h5>
                         
-                        <div class="checbox">
-                            <tr>
-                                <td>travail à chaud :</td>
-                                <td><input type="checkbox"  name="travail_chaud" > <br></td>                                                          
-                            </tr>
-
-                            <tr>
-                                <td>Perçage, moulage, découpage :</td>
-                                <td><input type="checkbox"  name="percage_moulage_decoupage" > <br></td>                               
-                            </tr>
-                            <tr>
-                                <td>Chauffage, soudage:</td>
-                                <td><input type="checkbox"  name="chauffage_soudage" > <br></td>                            
-                            </tr>
+                            <input type="checkbox" class="form-check-input" name="travail_chaud" >                                                          
+                            travail à chaud <br>
                             
-                            <tr>
-                                <td>Grenaillage, sablage :</td>
-                                <td><input type="checkbox" id="grenaillage_sablage" name="grenaillage_sablage" > <br></td>                                
-                            </tr>
-
-                            <tr>
-                                <td>Utilisation d' équipement électroportatif :</td>
-                                <td><input type="checkbox"  name="utilisation_equipement" > <br></td>                                
-                            </tr>
-
-                            <tr>
-                                <td>Vidange/ dégazage/ nettoyage :</td>
-                                <td><input type="checkbox"  name="vidange_degazage" > <br></td>                                
-                            </tr>
-
-                            <tr>
-                                <td>Travaux de démolition :</td>
-                                <td><input type="checkbox"  name="travaux_demolition"> <br></td>                                
-                            </tr>                              
-
-                            <tr>
-                                <td>Travail en espace confiné :</td>
-                                <td><input type="checkbox"  name="travail_espace" > <br></td>                                
-                            </tr>
-
-                            <tr>
-                                <td>Déplacement sur site :</td>
-                                <td><input type="checkbox"  name="deplacement_site" > <br></td>                                
-                            </tr>
+                            <input type="checkbox" class="form-check-input" name="percage_moulage_decoupage" >                                
+                            Perçage, moulage, découpage <br>
+                            
+                            <input type="checkbox" class="form-check-input" name="chauffage_soudage" >                             
+                            Chauffage, soudage <br>
+                            
+                            <input type="checkbox" class="form-check-input" id="grenaillage_sablage" name="grenaillage_sablage" >                                 
+                            Grenaillage, sablage <br>
+                        
+                            <input type="checkbox" class="form-check-input" name="utilisation_equipement" >                                 
+                            Utilisation d' équipement électroportatif <br>
+                            
+                            <input type="checkbox" class="form-check-input" name="vidange_degazage" >                                 
+                            Vidange/ dégazage/ nettoyage <br>
+                            
+                            <input type="checkbox" class="form-check-input" name="travaux_demolition">                                 
+                            Travaux de démolition <br>
+                                                        
+                            <input type="checkbox" class="form-check-input" name="travail_espace" >                                 
+                            Travail en espace confiné <br>
+                            
+                            <input type="checkbox" class="form-check-input" name="deplacement_site" >                                 
+                            Déplacement sur site <br>
+                            
+                            <input type="checkbox" class="form-check-input" name="manutention_levage" >                                 
+                            Manutention/levage <br>
+                            
+                            <input type="checkbox" class="form-check-input" name="travail_hauteur" >                                 
+                            Travail en hauteur plus 1,80m <br>
+                                    
+                            <input type="checkbox" class="form-check-input" name="travail_tuyauterie" >                                 
+                            Travail sur tuyauterie/ appareil de distribution <br>
+                                                                
+                            <input type="checkbox" class="form-check-input" name="fouille_mannuelle" >                                 
+                            Fouille manuelle <br>
+                                    
+                            <input type="checkbox" class="form-check-input" name="travaux_excavation" >                                 
+                            Travaux d'excavation <br>
+                            
+                            <input type="checkbox" class="form-check-input" name="travail_equipement" >                                 
+                            Travail sur équipement électrique <br>
                                 
-                            <tr>
-                                <td>Manutention/levage :</td>
-                                <td><input type="checkbox"  name="manutention_levage" > <br></td>                                
-                            </tr> 
+                            <input type="checkbox" class="form-check-input" name="travail_engin" >                                 
+                            Travail avec engin de chantier <br>
+                                                            
+                            <input type="checkbox" class="form-check-input" name="operation_piste" >                                 
+                            Opérations sur piste <br>
+                                            
+                            <input type="checkbox" class="form-check-input" name="travaux_bruyant" >                                 
+                            Travaux bruyants <br> <br>
+                                
+                            <div class="col-md-8 form-group">
+                                Autres (à préciser) <br>
+                                <input type="text" class="form-control" name="autre_nature">
+                            </div>       
+                        </div>                          
+
+                        <div class="col-md-4">
+                            <h5><strong>B-4 Nature des risques</strong></h5>
                             
-                            <tr>
-                                <td>Travail en hauteur plus 1,80m :</td>
-                                <td><input type="checkbox" name="travail_hauteur" > <br></td>                                
-                            </tr>          
+                            <input type="checkbox" class="form-check-input" name="emission_gaz" id="">
+                            Emission de gaz toxiques <br>
+            
+                            <input type="checkbox" class="form-check-input" name="incendie" id="">
+                            Incendie <br>
 
-                            <tr>
-                                <td>Travail sur tuyauterie/ appareil de distribution :</td>
-                                <td><input type="checkbox"  name="travail_tuyauterie" > <br></td>                                
-                            </tr>          
-
-                            <tr>
-                                <td>Fouille manuelle</td>
-                                <td><input type="checkbox"  name="fouille_mannuelle" > <br></td>                                
-                            </tr>          
-
-                            <tr>
-                                <td>Travaux d'excavation:</td>
-                                <td><input type="checkbox"  name="travaux_excavation" > <br></td>                                
-                            </tr>   
+                            <input type="checkbox" class="form-check-input" name="explosion" id="">
+                            Explosion <br>
+                                            
+                            <input type="checkbox" class="form-check-input" name="projection_etincelle" id="">
+                            Projection d'étincelles/particul <br>
+                                                
+                            <input type="checkbox" class="form-check-input" name="intoxication" id="">
+                            Intoxication <br>
+                                            
+                            <input type="checkbox" class="form-check-input" name="asphyxie" id="">
+                            Asphyxie <br>
+                                            
+                            <input type="checkbox" class="form-check-input" name="brulure" id="">
+                            Brulures <br>
+                                            
+                            <input type="checkbox" class="form-check-input" name="blessure" id="">
+                            Blessures <br>
+                                            
+                            <input type="checkbox" class="form-check-input" name="autre_lesion" id="">
+                            Autres lésions <br>
+                                            
+                            <input type="checkbox" class="form-check-input" name="chaute_plain_plied" id="">
+                            Chute de plain-pied <br>
+                                            
+                            <input type="checkbox" class="form-check-input" name="chute_objet" id="">
+                            Chute d'objet <br>
+                                            
+                            <input type="checkbox" class="form-check-input" name="chute_hauteur" id="">
+                            Chute de hauteur <br>
+                                            
+                            <input type="checkbox" class="form-check-input" name="incident_reseau" id="">
+                            Incidents réseau enterré <br>               
                             
-                            <tr>
-                                <td>Travail sur équipement électrique :</td>
-                                <td><input type="checkbox"  name="travail_equipement" > <br></td>                                
-                            </tr>      
+                            <input type="checkbox" class="form-check-input" name="epandage" id="">
+                            Epandage <br>               
+                            
+                            <input type="checkbox" class="form-check-input" name="eboulement" id="">
+                            Eboulement/ensevelissement <br>
+                            
+                            <input type="checkbox" class="form-check-input" name="electrocution" id="">
+                            Electrocution/électricistion" <br>                  
+                            
+                            <input type="checkbox" class="form-check-input" name="incident-cable" id="">
+                            Incidents cables aériens <br>                   
 
-                            <tr>
-                                <td>Travail avec engin de chantier :</td>
-                                <td><input type="checkbox"  name="travail_engin" > <br></td>                                
-                            </tr>      
-
-                            <tr>
-                                <td>Opérations sur piste :</td>
-                                <td><input type="checkbox"  name="operation_piste" > <br></td>                                
-                            </tr>     
-
-                            <tr>
-                                <td>Travaux bruyants :</td>
-                                <td><input type="checkbox"  name="travaux_bruyant" > <br></td>                                
-                            </tr>      
-
-                            <tr>
-                                <td>Autres (à préciser) :</td>
-                                <td><input type="text"  name="autre_nature" > <br></td>                                
-                            </tr>      
+                            <input type="checkbox" class="form-check-input" name="accident_circulation" id="">
+                            Accident lié à la circulation <br><br>
+                            
+                            <div class="col-md-8 form-group">
+                                Autres lésions <br>
+                                <input type="text" class="form-control" name="autre_lesion" id="" required>
+                            </div>
                         </div>
-                    </table>
 
+                        <div class="col-md-4">
+                            <h5><strong>B-5 MESURES PREVENTIVES</strong></h5>
                             
-                    </div>
-              
-                    
-
-                <!-- fin fin fin fin fin fin fin fin fin fin fin fin fin fin fin   -->
-
-                <!-- nature nature nature nature nature nature nature nature nature nature nature -->
-
-
-                    <br><br>
-                    <div class="form_nature2">
-                        <h2>Nature des risques</h2> <br>
-                    <table id="customers">
-                        <tr>
-                            <td>Emission de gaz toxiques :</td>
-                            <td><input type="checkbox" name="emission_gaz" id=""></td>
-                        </tr>
-
-                        <tr>
-                            <td>Incendie :</td>
-                            <td><input type="checkbox" name="incendie" id=""></td>
-                        </tr>
-
-                        <tr>
-                            <td>Explosion :</td>
-                            <td><input type="checkbox" name="explosion" id=""></td>
-                        </tr>
-
-                        <tr>
-                            <td>Projection d'étincelles/particul :</td>
-                            <td><input type="checkbox" name="projection_etincelle" id=""></td>
-                        </tr>
-
-                        <tr>
-                            <td>Intoxication :</td>
-                            <td><input type="checkbox" name="intoxication" id=""></td>
-                        </tr>
-
-                        <tr>
-                            <td>Asphyxie :</td>
-                            <td><input type="checkbox" name="asphyxie" id=""></td>
-                        </tr>
-
-                        <tr>
-                            <td>Brulures :</td>
-                            <td><input type="checkbox" name="brulure" id=""></td>
-                        </tr>
-
-                        <tr>
-                            <td>Blessures :</td>
-                            <td><input type="checkbox" name="blessure" id=""></td>
-                        </tr>
-
-                        <tr>
-                            <td>Autres lésions :</td>
-                            <td><input type="checkbox" name="autre_lesion" id=""></td>
-                        </tr>
-
-                        <tr>
-                            <td>Chute de plain-pied :</td>
-                            <td><input type="checkbox" name="chaute_plain_plied" id=""></td>
-                        </tr>
-
-                        <tr>
-                            <td>Chute d'objet :</td>
-                            <td><input type="checkbox" name="chute_objet" id=""></td>
-                        </tr>
-
-                        <tr>
-                            <td>Chute de hauteur :</td>
-                            <td><input type="checkbox" name="chute_hauteur" id=""></td>
-                        </tr>
-
-                        <tr>
-                            <td>Incidents réseau enterré :</td>
-                            <td><input type="checkbox" name="incident_reseau" id=""></td>
-                        </tr>
-
-                        <tr>
-                            <td>Epandage: </td>
-                            <td><input type="checkbox" name="epandage" id=""></td>
-                        </tr>
-
-                        <tr>
-                            <td>Eboulement/ensevelissement :</td>
-                            <td><input type="checkbox" name="eboulement" id=""></td>
-                        </tr>
-
-                        <tr>
-                            <td>Electrocution/électricistion" :</td>
-                            <td><input type="checkbox" name="electrocution" id=""></td>
-                        </tr>
-
-                        <tr>
-                            <td>Incidents cables aériens :</td>
-                            <td><input type="checkbox" name="incident-cable" id=""></td>
-                        </tr>
-
-                        <tr>
-                            <td>Accident lié à la circulation :</td>
-                            <td><input type="checkbox" name="accident_circulation" id=""></td>
-                        </tr>
-
-                        <tr>
-                            <td>Autres lésions :</td>
-                            <td><input type="text" name="autre_lesion" id="" required></td>
-                        </tr>
-
-                    </table>
-                    </div>
-
-                <!-- fin fin fin fin fin fin fin fin fin fin fin fin fin fin fin fin fin fin fin fin  -->
-
-
-                <!-- mesure mesure mesure mesure mesure mesure mesure mesure mesure mesure mesure mesure -->
-
-                    <div class="form_nature3">
-                        <h4>MESURES PREVENTIVES</h4>
-                        <br>
-    
-                        <label><strong><u>A la charge de la station-service</u> &nbsp; &nbsp; &nbsp; </strong></label>
-                    
-                        <label for="">Oui</label>
-                        <input type="radio" name="charge_station_service" id="oui" value="Oui">
+                            <label><strong>A la charge de la station-service &nbsp; &nbsp; &nbsp; </strong></label>
                         
-                        <label for="">Non</label>
-                        <input type="radio" name="charge_station_service" id="non" value="N/A"><br> <br>
-    
+                            <label for="">Oui</label>
+                            <input type="radio" class="form-check-input" name="charge_station_service" id="oui" value="Oui">
+                            
+                            <label for="">Non</label>
+                            <input type="radio" class="form-check-input" name="charge_station_service" id="non" value="N/A"><br>
+
+                            <label for="">Arret de la distribution &nbsp;</label><br>
+                            <label for="">Partiel...</label>
+                            <input type="radio" class="form-check-input" name="arret_distribution_total" id="" value="partiel">
+
+                            <label for="">Total...</label>
+                            <input type="radio" class="form-check-input" name="arret_distribution_total" id="" value="total"><br>
                         
-                        <label for="">Arret de la distribution &nbsp;</label>
-                        <label for="">Partiel...</label>
-                        <input type="radio" name="arret_distribution_total" id="" value="partiel">
-    
-                        <label for="">Total...</label>
-                        <input type="radio" name="arret_distribution_total" id="" value="total"><br> 
-                    
-    
-                        <label for="">fermeture de la station</label>
-                        <input type="checkbox" name="fermeture_station" id=""><br>
+
+                            <input type="checkbox" class="form-check-input" name="fermeture_station" id="">
+                            <label for="">fermeture de la station</label><br>
+                            
+                            <div class="col-md-8 form-group">
+                                <label for="">Arret d'une activité (précisez):</label><br>
+                                <input type="text" class="form-control" name="arret_activite" id="" required>
+                            </div>
+
+                            <strong>A la charge de la / les entreprise(s) extérieur(s)</strong><br>
+                            <input type="checkbox" class="form-check-input" name="test_gaz" id="">
+                            <label for="">Test de gaz</label><br>
+
+                            <label for="">
+                            <input type="checkbox" class="form-check-input" name="arret_travaux_depotage" id="">
+                            Arret des travaux pendant le dépotage
+                            </label><br>
+
+                            <input type="checkbox" class="form-check-input" name="arret_autre_travaux" id="">
+                            <label for="">Arret des autres travaux prévus</label><br>
+
+                            <input type="checkbox" class="form-check-input" name="extincteur_adapte2" id="">
+                            <label for="">Extincteurs adaptés</label><br>
+                            <label for="">
+                            <input type="checkbox" class="form-check-input" name="mise_terre" id="">
+                            Mise à la terre correcte des équipements
+                            </label><br>
+
+                            <input type="checkbox" class="form-check-input" name="appareil_respiratoire" id="">
+                            <label for="">Appareil respiratoire, ventilateur</label><br>
+
+                            <input type="checkbox" class="form-check-input" name="outillage" id="">
+                            <label for="">Outillage/ éclairage/ vemti;ateur</label><br>
+
+                            <input type="checkbox" class="form-check-input" name="port_EPI_2" id="">
+                            <label for="">Port EPI spécifiques (précisez)</label><br>
+
+                            <input type="checkbox" class="form-check-input" name="harnai" id="">
+                            <label for="">Harnais et dispositif anti-chute</label><br>
+
+                            <input type="checkbox" class="form-check-input" name="echaffaudage" id="">
+                            <label for="">Echaffaudage approprié</label><br>
+
+                            <label for="">
+                            <input type="checkbox" class="form-check-input" name="renseignement_reseaux_enterre" id="">
+                            Renseignements sur réseaux enterrés</label><br>
+
+                            <label for="">
+                            <input type="checkbox" class="form-check-input" name="consignation_equipement" id="">
+                            Consignation équipement ou système</label><br>
+
+                            <label for="">
+                            <input type="checkbox" class="form-check-input" name="consignation_electrique" id="">
+                            Consignation électrique</label><br>
+
+                            <label for="">
+                            <input type="checkbox" class="form-check-input" name="renseignement_reseau_aerien" id="">
+                            Renseignements sur réseau aérien
+                            </label><br>
+
+                            <input type="checkbox" class="form-check-input" name="aide_circulation" id="">
+                            <label for="">Aide à la circulation</label>
                         
-                        <label for="">Arret d'une activité (précisez):</label>
-                        <input type="text" name="arret_activite" id="" required><br><br>
-    
-                        <p><strong><u>A la charge de la / les entreprise(s) extérieur(s)</u></strong></p><br>
-                        <label for="">Test de gaz</label>
-                        <input type="checkbox" name="test_gaz" id=""><br>
-    
-                        <label for="">Arret des travaux pendant le dépotage</label>
-                        <input type="checkbox" name="arret_travaux_depotage" id=""><br>
-    
-                        <label for="">Arret des autres travaux prévus</label>
-                        <input type="checkbox" name="arret_autre_travaux" id=""><br>
-    
-                        <label for="">Extincteurs adaptés</label>
-                        <input type="checkbox" name="extincteur_adapte2" id=""><br>
-    
-                        <label for="">Mise à la terre correcte des équipements</label>
-                        <input type="checkbox" name="mise_terre" id=""><br>
-    
-                        <label for="">Appareil respiratoire, ventilateur</label>
-                        <input type="checkbox" name="appareil_respiratoire" id=""><br>
-    
-                        <label for="">Outillage/ éclairage/ vemti;ateur</label>
-                        <input type="checkbox" name="outillage" id=""><br>
-    
-                        <label for="">Port EPI spécifiques (précisez)</label>
-                        <input type="checkbox" name="port_EPI_2" id=""><br>
-    
-                        <label for="">Harnais et dispositif anti-chute</label>
-                        <input type="checkbox" name="harnai" id=""><br>
-    
-                        <label for="">Echaffaudage approprié</label>
-                        <input type="checkbox" name="echaffaudage" id=""><br>
-    
-                        <label for="">Renseignements sur réseaux enterrés</label>
-                        <input type="checkbox" name="renseignement_reseaux_enterre" id=""><br>
-    
-                        <label for="">Consignation équipement ou système</label>
-                        <input type="checkbox" name="consignation_equipement" id=""><br>
-    
-                        <label for="">Consignation électrique</label>
-                        <input type="checkbox" name="consignation_electrique" id=""><br>
-    
-                        <label for="">Renseignements sur réseau aérien</label>
-                        <input type="checkbox" name="renseignement_reseau_aerien" id=""><br>
-    
-                        <label for="">Aide à la circulation</label>
-                        <input type="checkbox" name="aide_circulation" id="">
-    
-                        <br><br>
-                    </div>       
-                </div>
-                <br><br>
+                        </div>
+                    </div>           
+                </div>       
+            </div>
                 
-                <h3>B-6. VISAS (PARTIE A REMPLIR CONJOINTEMENT PA RUN RESPONSABLE DU SITE 
-                    ET PAR L'ENTREPRISE INTERVENANTE AVANT LE DEBUT DES TRAVAUX)</h3><br>
-                    <strong>Entreprise(s) extérieure(s)</strong><br>
+            <div class="card">
+                <h5><strong>B-6. VISAS (PARTIE A REMPLIR CONJOINTEMENT PA RUN RESPONSABLE DU SITE 
+                    ET PAR L'ENTREPRISE INTERVENANTE AVANT LE DEBUT DES TRAVAUX)</strong></h5>
+
+                    <strong>Entreprise(s) extérieure(s)</strong>
                     Responsable de l'intervenation: <br>
-                    1: <input type="text" name="responsable_intervention1" id=""><br>
-                    2: <input type="text" name="responsable_intervention2" id=""><br>
-                    3: <input type="text" name="responsable_intervention3" id=""><br><br>
 
-                    Nombre d'intervenants: <input type="number" name="nombre_intervenant" id="">
-                    <br><br>
+                    <div class="col-md-8 form-group">
+                        <label for="">
+                        Nombre d'intervenants: <input type="number" class="form-control" name="nombre_intervenant" id="">
+                        </label>
+                    </div>
 
-                <h3>B-7 AUTRES INSTRUCTIONS ETV MERSURE PREVENTIVES AUX INTERVENANTS</h3>
+                    <div class="row">
+                        <div class="col-md-4">
+                            
+                            <label for="">
+                                Intervenant 1: <textarea type="text" class="form-control" name="responsable_intervention1" id=""></textarea>
+                            </label>
+                            
+                        </div>
+
+                        <div class="col-md-4">
+                            
+                            <label for="">
+                                Intervenant 2: <textarea type="text" class="form-control" name="responsable_intervention2" id=""></textarea>
+                            </label>
+                           
+                        </div>
+
+                        <div class="col-md-4">
+                           
+                            <label for="">
+                                Intervenant 3: <textarea type="text" class="form-control" name="responsable_intervention3" id=""></textarea>
+                            </label>
+                            
+                        </div>
+                    </div>
+            </div>
+
+            <div class="card">
+                <h5><strong>B-7 AUTRES INSTRUCTIONS ETV MERSURE PREVENTIVES AUX INTERVENANTS</strong></h5>
+                
+                <textarea type="text" class="form-control" name="autre_instruction" id=""></textarea>
+
+                <div class="col-md-10 form-group">
+                    <label for="">
+                        Numéros d'urgence: 
+                        <input type="text" class="form-control" name="numero_urgence" id="">
+                    </label>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="row">
+                    <h5><strong>B-8 VALIDATION AVANT LES TRAVAUX</strong></h5>
+                    <div class="col-md-6">
+                        <strong>REPRESENTANT DES INTERVENANTS</strong><br>
+                        1.Nom: 
+                        <input type="text" class="form-control" name="nom_representant_intervenant1" id="">
+                        2.Nom:
+                        <input type="text" class="form-control" name="nom_representant_intervenant2" id="">
+                    </div>
+
+                    <div class="col-md-6">
+                        <strong>RESPONSABLES DU SITE D'INTERVENTION</strong><br>
+                        Nom: 
+                        <input type="text" class="form-control" name="nom_site_intervention" id="">
+                        Date:
+                        <input type="date" class="form-control" name="date_site_intervention" id="">
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3><strong>B-9 VALIDATION APRES LES TRAVAUX</strong></h3>
+                <div class="row">
+                    <div class="col-md-6">
+                        <input type="checkbox" class="form-check-input" name="travail_temine" id="">
+                        Le travail est terminé <br>
+                        <input type="checkbox" class="form-check-input" name="site_laisse_normale" id="">
+                        La site est rendu à une exploitatiojn normale
+                    </div>
+
+                    <div class="col-md-6">
+                        <input type="checkbox" class="form-check-input" name="travail_non_termine" id="">
+                        Le travail n'est pas terminé <br>
+                        <input type="checkbox" class="form-check-input" name="site_laisse_propre" id="">
+                        Le site a été laissé propre et en sécurité
+                    </div>
+                </div>
                 <br>
-                <input type="text" name="autre_instruction" id=""><br><br>
+                <div class="row">
+                    <div class="col-md-6">
+                        <strong>RESPONSABLE DU SITE D'INTERVENTION</strong><br>
+                        Nom
+                        <input type="text" class="form-control" name="nom_site_intervention_fin" id="">
+                        Date et heure 
+                        <input type="datetime-local" class="form-control" name="date_heure_site_intervention" id="">
+                    </div>
 
-                Numéros d'urgence: 
-                <input type="text" name="numero_urgence" id=""><br><br>
-
-                <h3>B-8 VALIDATION AVANT LES TRAVAUX</h3><br>
-                <strong>REPRESENTANT DES INTERVENANTS</strong><br>
-                1.Nom: 
-                <input type="text" name="nom_representant_intervenant1" id=""><br>
-                2.Nom:
-                <input type="text" name="nom_representant_intervenant2" id=""><br><br>
-
-                <strong>RESPONSABLES DU SITE D'INTERVENTION</strong><br>
-                Nom: 
-                <input type="text" name="nom_site_intervention" id=""><br>
-                Dare:
-                <input type="date" name="date_site_intervention" id=""><br>
-                Visa: 
-                <input type="text" name="visa_site_intervention" id=""><br>
-                Signature:
-                <br><br>
-
-                <h3>B-9 VALIDATION APRES LES TRAVAUX</h3><br>
-                Le travail est terminé
-                <input type="checkbox" name="travail_temine" id=""><br>
-                La site est rendu à une exploitatiojn normale
-                <input type="checkbox" name="site_laisse_normale" id=""><br><br>
-
-                Le travail n'est pas terminé
-                <input type="checkbox" name="travail_non_termine" id=""><br>
-                Le site a été laissé propre et en sécurité
-                <input type="checkbox" name="site_laisse_propre" id=""><br><br>
-
-                <strong>RESPONSABLE DU SITE D'INTERVENTION</strong><br>
-                Nom
-                <input type="text" name="nom_site_intervention_fin" id=""><br>
-                Date et heure 
-                <input type="datetime-local" name="date_heure_site_intervention" id=""><br><br>
-
-                <strong>REPRESENTANT DES INTERVENANTS</strong><br>
-                Nom
-                <input type="text" name="nom_representant_intervenant_fin" id=""> &nbsp;&nbsp;
-                Signature <br>
-                Date
-                <input type="datetime-local" name="date_representant_intervenant_fin" id="">
-                <input type="hidden" value="{{user}}" name="user_profile">
-
-                <!-- fin fin fin fin fin fin fin fin fin fin fin fin fin fin fin fin fin fin fin fin  -->
-                <br><br>
-                <button type="submit">Enregistrer</button>
-
+                    <div class="col-md-6">
+                        <strong>REPRESENTANT DES INTERVENANTS</strong><br>
+                        Nom
+                        <input type="text" class="form-control" name="nom_representant_intervenant_fin" id=""> 
+                        Date
+                        <input type="datetime-local" class="form-control" name="date_representant_intervenant_fin" id="">
+                    </div>
+                </div>
+                
+                    <input type="hidden" value="{{user}}" name="user_profile">
+                    <br>
+                    <button type="submit" class="btn btn-success">Enregistrer</button>
+                    
+                
                 {% for message in messages %}
-                    <p id="messages">{{ message }}</p>
+                <h3 id="messages">{{ message }}</h3>
                 {% endfor %}
-
+                
+            </div>
             </form>
         </div>
 </div>

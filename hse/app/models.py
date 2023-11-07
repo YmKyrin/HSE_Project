@@ -623,7 +623,7 @@ class Checklist_stat(models.Model):
     # RESPONSABLE DU SITE D'INTERVENTION
     nom_site_intervention = models.CharField(max_length=50, default="N/A")
     date_site_intervention = models.DateField(default=date.today)
-    visa_site_intervention = models.CharField(max_length=20, default="N/A")
+    
     
     # B-9 VALIDATION APRES LES TRAVAUX
     travail_temine = models.BooleanField(default=False)
